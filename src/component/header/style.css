@@ -1,0 +1,114 @@
+.header{
+    display: flex;
+    padding :0px 10px;
+  background-color: rgb(235, 235, 235);
+  position: sticky;
+  width: 100%;
+    top:0;
+    z-index:999;
+}
+
+.logo{
+    display: flex;
+    width: 100px;
+    align-items: center;
+    flex-direction: column;
+    /* width: fit-content; */
+    border-radius: 6px;
+    background-color: black;
+    /* width: fit-content; */
+    place-items: center;
+    padding:5px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+
+}
+
+.logo > img{
+    height: 80px;
+    transform: rotate(270deg);
+    
+}
+.logoName{
+
+    font-weight: 900;
+    font-size :26px;
+    letter-spacing:-2px ;
+    color:white;
+    padding:5px;
+    /* margin-left: 3px; */
+    
+    text-transform: uppercase;
+    line-height: 24px;
+}
+.logoName >span{
+    color : var(--primary-color)
+
+}
+.subHeader{
+    height: 80px;
+    display: flex;
+    flex:1;
+    /* border: 2px solid black; */
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; */
+    /* box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px; */
+    margin : 5px 0px 5px 5px;
+    border-radius: 4px;
+    padding :0px 10px;
+
+
+}
+
+
+.searchBar{
+    display: flex;
+    height: 100%;
+    font-size: 26px;
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 40px;
+
+}
+.searchBar >input{
+    width : 460px;
+    border-radius: 4px;
+    border:0px;
+    background-color: rgb(238, 238, 238);
+    height :40px;
+    font-size: 24px;
+    margin-right: 5px;
+
+}
+.headerOption{
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+}
+.headerOption > button{
+    padding:8px 10px;
+    margin :0px 8px;
+    font-weight: 900;
+    font-size: 16px;
+    border:0;
+    color:white;
+    background-color:black;
+    border-radius: 4px;
+}
+
+
+@media(max-width:780px){
+    .header{
+        display: flex;
+        padding :0px 4px;
+    }
+    .searchBar >input{
+        width:320px
+    }
+}
