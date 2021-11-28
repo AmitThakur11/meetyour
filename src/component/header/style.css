@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 .header{
     display: flex;
     padding :0px 10px;
-  background-color: rgb(235, 235, 235);
+  /* background-color: rgb(235, 235, 235); */
   position: sticky;
-  width: 100%;
     top:0;
     z-index:999;
 }
@@ -36,6 +36,7 @@
     letter-spacing:-2px ;
     color:white;
     padding:5px;
+    font-family: 'Architects Daughter', cursive;
     /* margin-left: 3px; */
     
     text-transform: uppercase;
@@ -71,7 +72,7 @@
     flex:1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     height: 40px;
 
 }
@@ -111,4 +112,43 @@
     .searchBar >input{
         width:320px
     }
+}
+@media(max-width:480px){
+    .searchBar{
+        display: none;
+    }
+    .subHeader{
+        justify-content: flex-end;
+    }
+
+    .logo{
+        display: flex;
+        width: 70px;
+ 
+        border-radius: 4px;
+        padding:3px;
+    
+    }
+    
+    .logo > img{
+        height: 60px;
+        
+    }
+    .logoName{
+    
+        font-weight: 700;
+        font-size :22px;
+        letter-spacing:-2px ;
+        color:white;
+        padding:4px;
+        /* margin-left: 3px; */
+        
+        text-transform: uppercase;
+        line-height: 24px;
+    }
+    .logoName > span{
+        color : var(--primary-color)
+    
+    }
+    
 }

@@ -1,0 +1,74 @@
+.addPost__section{
+    /* width:fit-content; */
+    display: flex;
+    justify-content: center;
+}
+.addPost__wrapper{
+    border-radius: 6px;
+    background: white;
+    position: relative;
+    /* border :1px solid black; */
+    width : 600px;
+    /* background: rgb(224, 223, 223); */
+    padding:4px 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset; */
+}
+
+.userPhoto{
+    width:55px;
+    height: 55px;
+    position: absolute;
+    top:0;
+    left :0;
+    transform: translate(-115%,15%);
+    border:3px solid var(--primary-color);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+
+}
+.userPhoto >img{
+    width: 100%;
+    
+    border-radius: 50%;
+    border:0;
+}
+.inputPost__section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:10px;
+    
+}
+.inputPost__btn{
+    display: flex;
+    justify-content: space-between;
+    margin-top:10px;
+    align-items: center;
+    font-size: 22px;
+}
+
+.postBtn{
+    padding:8px 10px;
+    width:fit-content;
+    background: var(--black);
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    /* border :1px solid black; */
+}
+
+.inputPost__section >textarea{
+    height: 90px;
+    border:0px;
+    
+    font-size: 18px;
+    outline : none;
+}
+.inputPost__section >textarea::placeholder{
+    color:black;
+}
+#imageInput{
+    display: none;
+}
