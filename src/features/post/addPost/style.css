@@ -72,3 +72,31 @@
 #imageInput{
     display: none;
 }
+
+.imagePreview{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.preview{
+    width :80px;
+    position:relative;
+    margin :5px;
+    padding:8px;
+    background-color: rgb(235, 233, 233);
+    border-radius: 4px;
+
+}
+.preview >img{
+    width:95%;
+    height: 50px;
+}
+.cancelPreview{
+    position:absolute;
+    top : -10px;
+    right: -10px;
+    font-size: 20px;
+    color:red;
+}
+
