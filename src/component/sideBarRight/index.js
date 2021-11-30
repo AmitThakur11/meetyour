@@ -1,8 +1,9 @@
 import React from 'react'
 import FollowCard from '../FollowCard'
+import "./style.css"
 function SideBarRight() {
     return (
-        <section className = "sideBar bar-two">
+        <section className = "rightSideBar bar-two">
         <FollowCard/>
         <FollowCard/>
         <FollowCard/>

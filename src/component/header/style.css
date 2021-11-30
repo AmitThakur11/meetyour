@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 .header{
     display: flex;
     padding :0px 10px;
-  /* background-color: rgb(235, 235, 235); */
+    /* background-color: orangered; */
+    height: 100px;
+  background-color: rgb(235, 235, 235);
   position: sticky;
     top:0;
     z-index:999;
@@ -11,11 +13,12 @@
 .logo{
     display: flex;
     width: 100px;
+    height: fit-content;
     align-items: center;
     flex-direction: column;
     /* width: fit-content; */
     border-radius: 6px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     /* width: fit-content; */
     place-items: center;
     padding:5px;
@@ -33,13 +36,13 @@
 
     font-weight: 900;
     font-size :26px;
-    letter-spacing:-2px ;
+    /* letter-spacing:0px ; */
     color:white;
     padding:5px;
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Handlee', cursive;
     /* margin-left: 3px; */
     
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     line-height: 24px;
 }
 .logoName >span{
@@ -92,7 +95,7 @@
     font-size: 28px;
     font-weight: 700;
 }
-.headerOption > button{
+.logBtn{
     padding:8px 10px;
     margin :0px 8px;
     font-weight: 900;

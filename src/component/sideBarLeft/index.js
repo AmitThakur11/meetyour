@@ -6,9 +6,9 @@ import SideMenuBtn from '../sideMenuBtn/index'
 
 function SideBarLeft() {
     return (
-        <section className ="sideBar bar-one">
+        <section className ="leftSideBar__container bar-one">
         <img  src = {UserImg} alt ="user_pic"/>
-        <div className ="sideBar">
+        <div className ="leftSideBar">
             <SideMenuBtn name ="home"/>
             <SideMenuBtn name ="home"/>
             <SideMenuBtn name ="home"/>

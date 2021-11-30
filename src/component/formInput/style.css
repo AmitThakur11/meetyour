@@ -1,0 +1,31 @@
+.formInput{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    margin-bottom: 10px;
+}
+
+.formInput__item{
+    padding:0px 10px;
+    height: 40px;
+    margin : 7px 0px;
+    border : 1px solid;
+    border-radius: 4px;
+}
+.errorMsg{
+    color:rgba(255, 0, 0, 0.815);
+    font-size: 14px;
+    display: none;
+
+}
+
+.formInput__item::placeholder{
+    color:rgb(158, 158, 158);
+}
+
+.formInput__item:invalid[focused = "true"]{
+    border: 1px solid rgb(255, 0, 0);
+}
+.formInput__item:invalid[focused = "true"] ~ .errorMsg{
+    display: block;
+}

@@ -8,10 +8,12 @@ import {Link} from "react-router-dom"
 function Header() {
     return (
         <nav className ="header">
+            <Link to="/">
             <section className ="logo">
                 <img src={Logo} alt="logo"/>
                 <div className ="logoName">Meet<br/><span>Your</span></div>
             </section>
+            </Link>
             <section className ="subHeader">
             <div className ="searchBar">
                     <input/>
@@ -19,7 +21,7 @@ function Header() {
             </div>
             <section className ="headerOption">
                 
-                <button>Log out</button>
+            <Link to ="/register" ><button className="logBtn">Log out</button></Link>
                 <Link to ="/profile" >
                 <RiAliensFill />
                 </Link>
