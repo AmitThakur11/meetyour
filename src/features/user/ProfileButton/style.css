@@ -1,0 +1,18 @@
+.profileButton button{
+    background: black;
+    color:white;
+    padding :10px;
+    font-size: 24px;
+    margin :0px 10px 0px;
+    width : 130px;
+    border-radius: 4px;
+    font-weight: 700;
+    min-width: fit-content;
+    transition: 300ms ease-in-out;
+}
+
+.profileButton button:hover{
+    transform: scale(1.1);
+    background: var(--primary-color);
+    color:black;
+}

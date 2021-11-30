@@ -1,0 +1,80 @@
+.postCard{
+    width:600px;
+    margin :10px 0px;
+
+    min-height: 350px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(118, 164, 243, 0.13) 0px 0px 1px 1px;
+}
+.postHeader{
+    height: 70px;
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    padding:0px 5px;
+    justify-content: center;
+}
+
+.postHeader img{
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+    border : 3px solid var(--primary-color);
+    margin-right: 10px;
+
+}
+.postMedia>img{
+    width: 100%;
+    /* height: auto; */
+    
+}
+
+.userDetail{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.postReaction{
+    width:100%;
+    padding:4px 10px;
+    display: flex;
+    justify-content: flex-end;
+    /* background:rgb(233, 231, 231); */
+    
+}
+
+.postReaction__wrapper{
+    display:flex;
+    justify-content: flex-end;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    width: fit-content;
+    
+}
+.postReaction__wrapper > .reaction{
+    display: flex;
+    margin :5px 10px;
+    position: relative;
+    font-size: 24px;
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+
+}
+.reaction > .count{
+    font-size: 18px;
+
+}
+
+.captionContainer{
+    width: 100%;
+    padding:5px 10px;
+    font-weight: 700;
+    margin: 5px 0px;
+    /* border :1px solid black; */
+}

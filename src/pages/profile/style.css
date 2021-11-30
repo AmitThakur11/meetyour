@@ -1,0 +1,133 @@
+.profileLayout{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    
+}
+.profileHeader__detail{
+    display: flex;
+    /* justify-content: center; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+.profileLayout__wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding:0px 20px;
+    
+}
+.profileHeader__img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pd__img{
+    position: relative;
+}
+.pd__img >img{
+    width :300px;
+    height: 300px;
+    border-radius: 50%;
+    border:2px solid black;
+    
+}
+.pd__imgEditBtn{
+    position:absolute;
+    bottom:10%;
+    font-size: 24px;
+    right: 10%;
+    background: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border:1px solid var(--primary-color)
+}
+
+.pd__Name{
+    font-size: 42px;
+    font-weight: 700;
+    background: white;
+    padding:4px 10px;
+    border-radius :6px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+
+    width: fit-content;
+}
+
+.pd__Name >span{
+    color: var(--primary-color);
+    font-weight: 900;
+}
+.pd__about{
+    min-height: 300px;
+    background: white;
+}
+.profileButton__wrapper{
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin-top: 20px;
+    
+}
+
+.profileData{
+    width :100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profileBio{
+    width:600px;
+    min-height: 100px;
+    background-color: white;
+    padding:4px 8px;
+    border-radius: 6px;
+    line-height: 28px;
+}
+
+.profileBio > p{
+    font-size :24px;
+}
+.profileBio > a{
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(233, 69, 69);
+}
+
+.profileBio > a > span{
+    color : var(--primary-color);
+    font-weight: 700;
+}
+
+
+.profileData__wrapper{
+    width: 90%;
+}
+.pd__postContainer{
+    width: 100%;
+}
+.pd__postContainer >img{
+    width: 25%;
+    transition: 300ms ease-in-out;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    background :white;
+}
+
+.pd__postContainer >img:hover{
+    width: 25%;
+    transform: scale(1.1);
+    z-index: 999;
+    background: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+
+}
+
+
+

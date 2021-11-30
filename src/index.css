@@ -12,6 +12,10 @@
   margin:0;
   box-sizing: border-box;
 }
+link,a{
+  text-decoration: none;
+  color:black;
+}
 
 .App{
   background-color: rgb(235, 235, 235);
