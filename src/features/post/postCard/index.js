@@ -1,7 +1,7 @@
 import "./style.css";
 import React, { useState } from "react";
 import TimeAgo from "../timeAgo";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { likePost } from "../postSlice";
 import PostReaction from "../postReaction";
 import CommentSection from "../commentSection";

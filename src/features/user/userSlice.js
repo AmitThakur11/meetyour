@@ -47,6 +47,7 @@ export const changeProfilePic = createAsyncThunk("/user/profile_pic",async(displ
 export const followUser = createAsyncThunk("user/follow",async({toFollow})=>{
 
     const response = await axios.post(`user/follow/${toFollow}`);
+    return response.data.data
 
 })
 

@@ -2,7 +2,7 @@ import {useState} from "react"
 import  Timeline from "../../features/post/timeline/index";
 import SideBarLeft from '../../component/sideBarLeft';
 import SideBarRight from "../../component/sideBarRight";
-import {useSelector} from "react-redux"
+// import {useSelector} from "react-redux"
 import "./style.css"
 import {MdOutlineExplore , MdAddCircleOutline , MdMenu} from "react-icons/md"
 

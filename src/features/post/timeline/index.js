@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import AddPost from "../addPost";
 import PostCard from "../postCard";
 import "./style.css"

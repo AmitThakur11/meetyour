@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import "./style.css";
 import { RiCamera3Line } from "react-icons/ri";
 import ProfileButton from "../../features/user/ProfileButton/index";

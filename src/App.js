@@ -27,7 +27,7 @@ function App() {
     localStorage?.getItem("auth")
   )?.token;
 
-  const { user ,status,login } = useSelector((state) => state.user);
+  const {login } = useSelector((state) => state.user);
 
 
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import CommentCard from "../commentCard";
 
 function CommentSection(props) {
@@ -11,7 +11,7 @@ function CommentSection(props) {
     setDisplayComment((comment) => {
       return { ...comment, commentQty: 1 };
     });
-  const [commentList, setCommentList] = useState(false);
+  // const [commentList, setCommentList] = useState(false);
 
   return (
     <>

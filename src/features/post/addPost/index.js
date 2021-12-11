@@ -10,7 +10,8 @@ function AddPost() {
   const [preview, setpreview] = useState([]);
   const [postData, setPostData] = useState({caption : "", media : []});
   const {user} = useSelector(state => state.user)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  console.log(imgData)
 
   
   return (

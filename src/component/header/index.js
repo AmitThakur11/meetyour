@@ -4,7 +4,7 @@ import "./style.css"
 // import { FiSearch } from "react-icons/fi";
 import {useSelector} from "react-redux"
 import { RiAliensFill } from "react-icons/ri";
-import {Link,useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {useState} from "react"
 import {logout} from "../../features/user/userSlice";
 import {useDispatch} from "react-redux"
@@ -15,7 +15,7 @@ function Header() {
     const [userOption, setUserOption] =useState(false)
     const {user ,otherUsers} = useSelector((state)=>state.user)
 
-    const navigate = useNavigate()
+    
     const searchData = otherUsers.filter((data)=> data.username.match(searchText))
     const logoutHandler =()=>{
         dispatch(logout())
@@ -43,7 +43,7 @@ function Header() {
                             <div className="searchItem" onClick={()=>{
                                 setSearchText("")
                                 }}>
-                                <img src={user.displayPic}/>
+                                <img src={user.displayPic} alt={user._id}/>
                                 <span>{user.username}</span>
                             </div>
 

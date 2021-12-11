@@ -3,7 +3,7 @@ import FormInput from '../../component/formInput/index';
 import RegisterImg from  "../../media/register.png";
 import {useState} from 'react';
 import {login} from "../../features/user/userSlice";
-import {useDispatch,useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import {useNavigate,Link} from "react-router-dom"
 function Login() {
   document.title ='login';
@@ -13,7 +13,7 @@ function Login() {
     password : ""
   })
   const dispatch = useDispatch()
-  const isLogin = useSelector(state => state.user.login)
+  // const isLogin = useSelector(state => state.user.login)
   const inputFieldData = [
     {
       id : 1,
