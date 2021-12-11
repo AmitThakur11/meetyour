@@ -1,13 +1,14 @@
 import FollowCard from "../../../component/FollowCard/index"
-import {useSelector} from "react-redux"
-function Following(props) {
-    const {following} = props.user
+function UserDataPage(props) {
+    const {data , title} = props.user
+    
     return (
         <div>
-            <h1>Folllowing</h1>
+            <h1>{title}({data.length})</h1>
+            <br/>
             <div>
                 {
-                    following.map((user)=>{
+                    data.map((user)=>{
                         return <FollowCard user ={user}/>
 
                     })
@@ -18,4 +19,4 @@ function Following(props) {
     )
 }
 
-export default Following
+export default UserDataPage

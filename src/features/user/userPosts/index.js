@@ -1,14 +1,19 @@
 import React from 'react'
-import Post from "../../../media/post.png"
-function UserPost() {
+import {useSelector} from "react-redux"
+import {Link} from "react-router-dom"
+
+function UserPost(props) {
+    const {user} =props
+    
     return (
                     <div className ="pd__postContainer">
-                        <img src ={Post} alt="post"/>
-                        <img src ={Post} alt="post"/>
-                        <img src ={Post} alt="post"/>
-                        <img src ={Post} alt="post"/>
-                        <img src ={Post} alt="post"/>
-                        <img src ={Post} alt="post"/>
+                        
+                        {
+                            user.post.map((postImage)=>{
+                                return <Link to ={`/post/${postImage._id}`}><img  className ="userPostImg" src ={postImage.media[0]} alt="post"/></Link>
+                                    
+                            })
+                        }
 
                     
                     
