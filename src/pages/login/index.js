@@ -1,69 +1,40 @@
 import './style.css';
 import FormInput from '../../component/formInput/index';
 import RegisterImg from  "../../media/register.png";
-import {Link} from "react-router-dom"
-import {useState} from 'react'
+import {useState} from 'react';
+import {login} from "../../features/user/userSlice";
+import {useDispatch,useSelector} from "react-redux"
+import {useNavigate,Link} from "react-router-dom"
 function Login() {
-  document.title ='home';
+  document.title ='login';
+  const navigate = useNavigate()
   const [userInput , setUserInput] = useState({
     email : "",
     password : ""
   })
-
+  const dispatch = useDispatch()
+  const isLogin = useSelector(state => state.user.login)
   const inputFieldData = [
-    // {
-    //   id : 1 ,
-    //   name  : "username",
-    //   placeholder : "Username",
-    //   type : "text",
-    //   // value : userInput.username,
-    //   label : "Username",
-    //   required : true,
-    //   pattern : "^[A-Za-z0-9]{3,16}$",
-    //   errorMsg : "username should be 3-16 character and shouldn't include any special character !"
-    // },
     {
-      id : 2,
+      id : 1,
       name  : "email",
       placeholder : "Email",
       type : "email",
-      // value : userInput.email,
       label : "Email",
       required : true,
       errorMsg : "It should be a valid email address !"
     },
-    // {
-    //   id :3,
-    //   name  : "dob",
-    //   placeholder : "dd-mm-yy",
-    //   type:"Date",
-    //   // value : userInput.dob,
-    //   label : "Birthday"
-      
-    // },
     {
-      id :4,
+      id :2,
       name  : "password",
       placeholder : "Password",
       type:"password",
-      // value : userInput.password,
       label : "Password",
       pattern : `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-z0-9!@#$%^&*]{8,20}$`,
       required : true,
       errorMsg:"Password should be atleast 8-20 character long and include 1 letter , 1 number and 1 special character !"
     },
-    // {
-    //   id :5,
-    //   name  : "cpassword",
-    //   placeholder : "Confirm password",
-    //   type : "password",
-    //   // value : userInput.cpassword,
-    //   label : "Confirm password",
-    //   required : true,
-    //   pattern : userInput.password,
-    //   errorMsg:"Password doesn't match",
-      
-    // },
+    
 
   ]
 
@@ -75,15 +46,16 @@ function Login() {
     })
 
   }
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault();
-    console.log(userInput)
-
+    await dispatch(login(userInput))
+    navigate("/")
+    
   }
   return (
     <div className="login">
         <div className ="sideImage">
-            <img src ={RegisterImg} alt="register image"/>
+            <img src ={RegisterImg} alt="register"/>
         </div>
         <div className="formWrapper">
       <form onSubmit={handleSubmit} >
@@ -96,6 +68,7 @@ function Login() {
       }
       
       <button className ="authBtn" type="submit">Login</button>
+      <div className ="authFooter">New to the club<Link to ="/register"><span>Clik here</span></Link></div>
       
       </form>
       </div>

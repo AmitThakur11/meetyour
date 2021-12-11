@@ -2,17 +2,21 @@ import './style.css';
 import FormInput from '../../component/formInput/index';
 import RegisterImg from  "../../media/register.png";
 import {Link} from 'react-router-dom'
-
+// import {getUser} from "../../features/user/userSlice"
+import {register} from "../../features/user/userSlice"
 import {useState} from 'react'
+import {useDispatch} from "react-redux"
 function Register() {
-  document.title ='home';
+  document.title ='Register';
   const [userInput , setUserInput] = useState({
     username : "",
     email : "",
-    dob : "",
+    dateOfBirth : "",
     password : "",
     cpassword : ""
   })
+  const dispatch = useDispatch();
+
 
   const inputFieldData = [
     {
@@ -20,7 +24,6 @@ function Register() {
       name  : "username",
       placeholder : "Username",
       type : "text",
-      // value : userInput.username,
       label : "Username",
       required : true,
       pattern : "^[A-Za-z0-9]{3,16}$",
@@ -31,17 +34,15 @@ function Register() {
       name  : "email",
       placeholder : "Email",
       type : "email",
-      // value : userInput.email,
       label : "Email",
       required : true,
       errorMsg : "It should be a valid email address !"
     },
     {
       id :3,
-      name  : "dob",
+      name  : "dateOfBirth",
       placeholder : "dd-mm-yy",
       type:"Date",
-      // value : userInput.dob,
       label : "Birthday"
       
     },
@@ -50,7 +51,6 @@ function Register() {
       name  : "password",
       placeholder : "Password",
       type:"password",
-      // value : userInput.password,
       label : "Password",
       pattern : `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-z0-9!@#$%^&*]{8,20}$`,
       required : true,
@@ -61,7 +61,6 @@ function Register() {
       name  : "cpassword",
       placeholder : "Confirm password",
       type : "password",
-      // value : userInput.cpassword,
       label : "Confirm password",
       required : true,
       pattern : userInput.password,
@@ -81,14 +80,14 @@ function Register() {
   }
   const handleSubmit = (e)=>{
     e.preventDefault();
-    console.log(userInput)
+    dispatch(register(userInput))
 
   }
   return (
     <div className="register">
         
         <div className ="sideImage">
-            <img src ={RegisterImg} alt="register image"/>
+            <img src ={RegisterImg} alt="register"/>
         </div>
         <div className="formWrapper">
       <form onSubmit={handleSubmit} >
