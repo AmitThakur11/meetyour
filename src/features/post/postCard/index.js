@@ -1,63 +1,54 @@
-import "./style.css"
-import UserImg from "../../../media/user.jpg"
-import PostImg from "../../../media/post.png"
-import { IoHeartOutline , IoHeartSharp ,IoChatbubbleOutline , IoBookmarkOutline} from "react-icons/io5";
-import React from 'react'
-import CommentSection from "../commentCard/index";
+import "./style.css";
+import React, { useState } from "react";
+import TimeAgo from "../timeAgo";
+import { useSelector, useDispatch } from "react-redux";
+import { likePost } from "../postSlice";
+import PostReaction from "../postReaction";
+import CommentSection from "../commentSection";
+function PostCard(props) {
+  const { post } = props;
+  const dispatch = useDispatch();
+  const [displayComment, setDisplayComment] = useState({
+    inputComment: false,
+    commentQty: 1,
+  });
 
-function PostCard() {
-    return (
-        <div className ="postCard">
-            <section className ="postHeader">
-                <div className ="userDetail">
-                    <img src={UserImg} alt="userimg"/>
-                    <div>@i.m.Dexter</div>
-
-                </div>
-                
-            </section>
-            <section className ="postMedia">
-                <img src={PostImg} alt ="post"/>
-            </section>
-            <section className ="postReaction">
-                <section className ="postReaction__wrapper">
-                    <div className ="reaction">
-                        <label><IoHeartOutline/></label>
-                        <div className ="count">0</div>
-                    </div>
-                    <div className ="reaction">
-                        <label><IoChatbubbleOutline/></label>
-                        <div className ="count">0</div>
-                    </div>
-                    <div className ="reaction">
-                        <label><IoBookmarkOutline/></label>
-                    </div>
-                </section>
-
-
-            </section>
-            <section className ="captionContainer">
-                <div className="caption">
-                    A happ day to remember
-
-                </div>
-
-            </section>
-            <section className ="commentInput">
-                <CommentSection input />
-                
-            </section>
-            <section className ="comment">
-            <CommentSection/>
-            </section>
-            <section className ="comment">
-            <CommentSection/>
-            </section>
-            <section className ="comment">
-            <CommentSection/>
-            </section>
+  return (
+    <div key={post?._id} className="postCard">
+      <section className="postHeader">
+        <div className="userDetail">
+          <img src={post?.author?.displayPic} alt="userimg" />
+          <div>{post?.author?.username}</div>
+          <div className ="postTime">
+            <TimeAgo
+            timestamp={post.createdAt}
+            
+          />
+          </div>
         </div>
-    )
+      </section>
+      <section
+        className="postMedia"
+        onDoubleClick={() => dispatch(likePost(post._id))}
+      >
+        <img src={post?.media[0]} alt="post" />
+      </section>
+      <PostReaction post={post} setDisplayComment={setDisplayComment} />
+
+      <section className="captionContainer">
+        <div className="caption">
+          {post.caption}
+          <br />
+         
+        </div>
+      </section>
+      <CommentSection
+        displayComment={displayComment}
+        post={post}
+        setDisplayComment={setDisplayComment}
+      />
+    </div>
+  );
 }
 
-export default PostCard
+export default PostCard;

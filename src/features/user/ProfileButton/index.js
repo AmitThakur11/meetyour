@@ -1,9 +1,10 @@
 import React from 'react'
 import "./style.css"
 function ProfileButton(props) {
+     const forClicked = { color:"white" , backgroundColor:"blue"}
     return (
         <section className ="profileButton">
-            <button>{props.name}</button>
+            <button   onClick = {props.onClick}>{props.name}</button>
             
         </section>
     )

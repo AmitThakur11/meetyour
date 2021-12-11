@@ -7,7 +7,8 @@
 }
 
 .commentWrapper img{
-    width:40px;
+    width:50px;
+    height: 50px;
     border-radius: 50%;
     border:1px solid black;
     margin-right: 10px;
@@ -16,6 +17,7 @@
 
 .commentDetail{
     display: flex;
+    flex:1;
     flex-direction: column;
 }
 .commentHead{
@@ -25,7 +27,7 @@
 }
 .commentName{
     font-weight: 700;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .commentTime{
@@ -44,7 +46,7 @@
     background: white;
     padding:5px 2px;
     border:0px;
-    width: 300px;
+    width:100%;
     margin-top: 4px;
     font-size: 14px;
     outline : none;
@@ -54,4 +56,25 @@
 
 .commentBody > input:focus{
     border-bottom: 1px solid black;
+}
+
+.commentBtn{
+    padding:4px 8px;
+    font-weight: 600;
+    background-color: black;
+    color:white;
+}
+
+@media(max-width:480px){
+    .commentWrapper img{
+        width:35px;
+        height: 35px;
+        
+        margin-right: 6px;
+    
+    }
+    .commentBody{
+        margin: 0;
+    }
+
 }

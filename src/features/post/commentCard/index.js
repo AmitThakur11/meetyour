@@ -1,23 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./style.css"
-import UserImg from "../../../media/user.jpg"
-function CommentSection( props) {
+import {useSelector , useDispatch} from "react-redux";
+import {addComment} from "../postSlice"
+import TimeAgo from '../timeAgo';
+function CommentCard(props) {
+    const {user} = useSelector((state)=>state.user)
+    const {input,comment,post , style} = props
+    const [commentText,setCommentText] = useState("")
+    const dispatch = useDispatch();
     return (
-        <section className ="commentWrapper">
+        <section className ="commentWrapper" style ={style}>
+
             <div>
-                <img src ={UserImg} alt ="/"/>
+                <img src ={input ? user.displayPic : comment?.author?.displayPic} alt ="/"/>
             </div>
-            <section className ="commentDetail">
+            <section className ="commentDetail" >
                 <div className ="commentHead">
-                    <div className ="commentName">@i.m.Dexter</div>
-                    {!props.input && <div className ="commentTime">7 minutes ago</div>}
+                    <div className ="commentName">{input ? user.username : comment?.author?.username}</div>
+                    {!input && <div className ="commentTime">
+                    <TimeAgo
+            timestamp={comment.createdAt}
+            style={{ color: "red", fontSize: "14px" }}
+          /></div>}
                 </div>
                 <div className ="commentBody">{
-                    props.input ? <input placeholder = "Write something"/>:"nice pic bro"
+                    input ? <input onChange={(e)=>{
+                        console.log(e.target.value)
+                        setCommentText(e.target.value)
+                    }} placeholder = "Write something"/>: comment.comment
                 }</div>
             </section>
-            {props.input && <section>
-            <button>ADD</button>
+            {input && <section>
+            <button className="commentBtn"  onClick = {()=>dispatch(addComment({postId : post._id,commentText : commentText}))
+            } >ADD</button>
 
             </section>
 }
@@ -26,4 +41,4 @@ function CommentSection( props) {
     )
 }
 
-export default CommentSection
+export default CommentCard
