@@ -117,18 +117,16 @@
 .profileBio > a{
     text-decoration: none;
     font-size: 18px;
-    color: rgb(233, 69, 69);
-}
-
-.profileBio > a > span{
     color : var(--primary-color);
+    display: inline-flex;
     font-weight: 700;
+
 }
 
 
 .profileData__wrapper{
     width: 90%;
-    margin-left: 8em;
+    /* margin-left: 8em; */
 }
 .pd__postContainer{
     width: 100%;
@@ -220,8 +218,7 @@
     }
     .profileBio > a {
       
-        font-size: 14px;
-     
+        font-size: 10px;
     }
     .profileData__wrapper{
         margin:0;

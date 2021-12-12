@@ -30,7 +30,8 @@
 
 }
 .aboutItem > div{
-    background-color: rgb(167, 238, 226);
+    background-color: var(--light-primary);
+    color:white;
     width: fit-content;
     font-weight: 500;
     padding:6px 12px;

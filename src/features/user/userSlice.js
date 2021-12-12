@@ -51,10 +51,20 @@ export const followUser = createAsyncThunk("user/follow",async({toFollow})=>{
 
 })
 
-export const seeProfile = createAsyncThunk("user/profile",async({userId})=>{
-    const response = await axios.get(`user/profile/${userId}`)
+export const savePost = createAsyncThunk("post/save",async(postId)=>{
+    console.log(postId)
+    const response = await axios.post(`/post/save/${postId}`);
+    console.log(response.data.data)
     return response.data.data
 })
+
+
+
+
+// export const seeProfile = createAsyncThunk("user/profile",async({userId})=>{
+//     const response = await axios.get(`user/profile/${userId}`)
+//     return response.data.data
+// })
 const userSlice = createSlice({
     name : "user",
     initialState,
@@ -117,20 +127,28 @@ const userSlice = createSlice({
         [allUsers.fulfilled]:(state,{payload})=>{
             state.otherUsers = payload;
         },
-        [seeProfile.pending]:(state,action)=>{
-            // state.status ="loading"
-        },
-        [seeProfile.fulfilled]:(state,{payload})=>{
+        [savePost.fulfilled]:(state,{payload})=>{
             console.log(payload)
-            state.otherUserProfile = payload
-            state.status = "success"
-        },
-        [seeProfile.rejected]:(state,action)=>{
-            state.status = "failed"
-        },
+            state.user.savePost = payload
+
+        }
         
     }
 })
 
 export const {logout} = userSlice.actions
 export default userSlice.reducer 
+
+
+
+//   [seeProfile.pending]:(state,action)=>{
+//             // state.status ="loading"
+//         },
+//         [seeProfile.fulfilled]:(state,{payload})=>{
+//             console.log(payload)
+//             state.otherUserProfile = payload
+//             state.status = "success"
+//         },
+//         [seeProfile.rejected]:(state,action)=>{
+//             state.status = "failed"
+//         }

@@ -14,14 +14,13 @@ function Header() {
     const [searchText , setSearchText] =useState("")
     const [userOption, setUserOption] =useState(false)
     const {user ,otherUsers} = useSelector((state)=>state.user)
-
-    
     const searchData = otherUsers.filter((data)=> data.username.match(searchText))
     const logoutHandler =()=>{
         dispatch(logout())
         setUserOption(false);
         // navigate("/login")
     }
+    console.log(searchData)
 
     return (
         <nav className ="header">

@@ -1,0 +1,10 @@
+.userSaved__post{
+    width:100%;
+    display:flex
+}
+.userSaved__postImg > img{
+    width :200px;
+    height: auto;
+    max-height: 200px;
+    margin:2px
+}

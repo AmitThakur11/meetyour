@@ -1,13 +1,15 @@
 import { useState} from "react";
 import "./style.css";
 import { RiCamera3Line } from "react-icons/ri";
+import {HiLink} from "react-icons/hi"
 import ProfileButton from "../../features/user/ProfileButton/index";
 import About from "../../features/user/about";
 import UserPost from "../../features/user/userPosts";
 import UserDataPage from "../../features/user/userDataPage";
-// import Following from "../../features/user/following";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import UserSavePost from "../../features/user/userSavePost";
+
 import {
   changeProfilePic
 } from "../../features/user/userSlice";
@@ -57,9 +59,9 @@ function Profile() {
             {!isAdmin && <button>Follow</button>}
           </div>
           <div className="profileBio">
-            <p>23' , on the way to become a Fullstack developer</p>
-            <a href="http://localhost:3000">
-              <span>Website : </span>http://localhost:3000
+            <p>{user.bio}</p>
+            <a href={user.website}>
+              <HiLink/><span>{user.website}</span>
             </a>
           </div>
           
@@ -88,7 +90,7 @@ function Profile() {
             />
             <ProfileButton
               name={`Saved(${user.savePost.length})`}
-              onClick={() => setSubPage("following")}
+              onClick={() => setSubPage("save")}
               subPage={subPage}
             />
           </div>
@@ -97,8 +99,8 @@ function Profile() {
           {subPage === "userPost" && <UserPost user={user} isAdmin={isAdmin} />}
           {subPage === "about" && <About user={user} isAdmin={isAdmin} />}
           {subPage === "follower" && <UserDataPage user={{data : user.followers , title  :"Followers"}} isAdmin={isAdmin} />}
-          {subPage === "following" && (
-            <UserDataPage user={{data : user.following , title  :"Followers"}} isAdmin={isAdmin} />
+          {subPage === "save" && (
+            <UserSavePost />
           )}
         </div>
       

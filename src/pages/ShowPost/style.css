@@ -59,6 +59,7 @@
     .sP__postImg{
         max-width: 100%;
         height: auto;
+        max-height: 360px;
     }
     .sP__userPic{
         width: 40px;

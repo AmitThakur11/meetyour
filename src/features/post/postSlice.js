@@ -73,6 +73,7 @@ const postSlice = createSlice({
             const findPost = state.posts.findIndex((post)=>post._id === payload.postId);
             state.posts[findPost].comments.unshift(payload.response)
         }
+        
 
 
     }
