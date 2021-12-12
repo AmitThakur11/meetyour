@@ -1,10 +1,13 @@
 import React from 'react'
 import "./style.css"
 function ProfileButton(props) {
-    //  const forClicked = { color:"white" , backgroundColor:"blue"}
+    const { label,name, onClick , subPage} = props
+    
+    const selected =  label === subPage ? true : false
+    console.log(selected)
     return (
-        <section className ="profileButton">
-            <button   onClick = {props.onClick}>{props.name}</button>
+        <section className = {selected ? "profileButton selected" : "profileButton"}>
+            <button    onClick = {()=>onClick()}>{name}</button>
             
         </section>
     )

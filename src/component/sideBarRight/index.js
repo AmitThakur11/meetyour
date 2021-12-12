@@ -8,7 +8,14 @@ import "./style.css"
 function SideBarRight({on}) {
     const dispatch = useDispatch();
     const {user,otherUsers} = useSelector(state => state.user);
-    console.log(otherUsers)
+    const followingId = user?.following?.map((otherUser)=>otherUser._id);
+    const exploreUsers = otherUsers.map((otherUser)=>{
+        if(!followingId?.includes(otherUser._id)&& otherUser._id !== user._id){
+            return otherUser
+        }
+        return false
+    })
+    console.log(exploreUsers)
     useEffect(() => {
         dispatch(allUsers())
     }, [dispatch])
@@ -21,8 +28,8 @@ function SideBarRight({on}) {
             </div>
             
         {
-            otherUsers?.map((others)=>{
-                return user._id !==others._id && <FollowCard user={others}/>
+            exploreUsers?.map((others)=>{
+                return   others && <FollowCard user={others}/>
             })
         }
         

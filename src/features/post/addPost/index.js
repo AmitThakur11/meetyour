@@ -5,6 +5,7 @@ import {useSelector , useDispatch} from "react-redux"
 import "./style.css";
 import {removePreview,previewImg} from "./functions"
 import {addPost} from "../postSlice"
+import { toast } from "react-toastify";
 function AddPost() {
   const [imgData, setImgData] = useState([]);
   const [preview, setpreview] = useState([]);
@@ -53,7 +54,17 @@ function AddPost() {
               accept="image/*"
             />
 
-            <button className="postBtn" onClick={() =>{dispatch(addPost({caption : postData.caption , media : preview }))
+            <button className="postBtn" onClick={() =>{
+              const {caption} = postData;
+              if(!caption){
+                return toast.info("Need a caption !")
+              }
+              if(preview.length === 0){
+                return toast.info("Empty media !")
+              }
+            
+              dispatch(addPost({caption : postData.caption , media : preview }))
+
             }}>
               POST
             </button>

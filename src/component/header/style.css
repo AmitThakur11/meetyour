@@ -249,7 +249,7 @@
     }
     
     .searchBar >input{
-        width : 50%;
+        width : 90%;
         height :30px;
         font-size: 16px;
         margin: 5px;
@@ -262,7 +262,7 @@
    
     .searchResult{
         /* background-color: var(--yellow); */
-        width : 50%;
+        width : 90%;
         position: absolute;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
@@ -309,8 +309,10 @@
     .userMenu__options{
         position: absolute;
         font-size: 16px;
-        line-height: 20px;
+        line-height: 24px;
         padding: 10px;
+        top: 120%;
+        right: -160%
         
     }
     

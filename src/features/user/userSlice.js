@@ -2,7 +2,7 @@ import {createSlice , createAsyncThunk}  from "@reduxjs/toolkit";
 import axios from 'axios'
 import {toast} from "react-toastify"
 const initialState = {
-    user : [],
+    user : {},
     otherUsers : [],
     otherUserProfile : {},
     status : 'loading',
@@ -60,7 +60,7 @@ export const savePost = createAsyncThunk("user/savePost",async(postId)=>{
 
 export const editProfile = createAsyncThunk("user/edit", async(updateData)=>{
     const response = await axios.post("user/editprofile",updateData);
-    console.log(response.data)
+    return response.data.data
 
 
 })
@@ -118,6 +118,14 @@ const userSlice = createSlice({
             state.status = "success"
             state.login=true
         },
+        [followUser.fulfilled]:(state,{payload})=>{
+            const {user, userYouFollow} = payload
+            const toFollowIndex = state.otherUsers.findIndex((user)=>user._id === userYouFollow._id);
+            state.otherUsers[toFollowIndex] = userYouFollow;
+            state.user.following = user.following
+            console.log(toFollowIndex)
+            state.status = "success"
+        },
         [fetchUser.rejected]:(state,action)=>{
             state.status = "failed"
         },
@@ -125,7 +133,9 @@ const userSlice = createSlice({
             state.status ="loading"
         },
         [changeProfilePic.fulfilled]:(state,{payload})=>{
+            console.log(payload)
             state.user.displayPic = payload.displayPic;
+
             state.status = "success"
         },
         [changeProfilePic.rejected]:(state,action)=>{
@@ -139,12 +149,26 @@ const userSlice = createSlice({
             state.user.savePost = payload
 
         },
-        // [editProfile.fulfilled]:(state,{payload})=>{
-        //     console.log(payoad)
-        // }
+        [editProfile.pending]:(state,{payload})=>{
+            state.status = "loading"
+        },
+        [editProfile.fulfilled]:(state,{payload})=>{
+            const { username , email ,bio , dateOfBirth , website} = payload
+            state.user.username =username;
+            state.user.email = email;
+            state.user.bio = bio;
+            state.user.dateOfBirth = dateOfBirth;
+            state.user.website = website;
+            state.status ="success"
+        },
+        [editProfile.rejected]:(state,action)=>{
+            state.status="error"
+
+        }
+        }
 
         
-    }
+    
 })
 
 export const {logout} = userSlice.actions

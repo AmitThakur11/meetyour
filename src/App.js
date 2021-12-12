@@ -14,19 +14,20 @@ import { getPosts } from "./features/post/postSlice";
 import PrivateRoute from "./features/user/privateRoute"
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 
+// https://meetyourbackend.herokuapp.com
 
 function App() {
   const dispatch = useDispatch();
-  axios.defaults.baseURL = "https://meetyourbackend.herokuapp.com";
+  axios.defaults.baseURL = "http://localhost:8000";
   axios.defaults.headers.common["Authorization"] = JSON.parse(
     localStorage?.getItem("auth")
   )?.token;
 
-  const {login } = useSelector((state) => state.user);
+  // const {login , user } = useSelector((state) => state.user);
 
 
 
@@ -41,7 +42,7 @@ function App() {
       }
       
     })();
-  }, [dispatch,login]);
+  }, [dispatch]);
 
   return (
     <div className="App">

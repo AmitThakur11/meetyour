@@ -20,6 +20,7 @@
     height: 55px;
     position: absolute;
     top:0;
+    display: inline-flex;
     left :0;
     transform: translate(-115%,15%);
     border:3px solid var(--primary-color);
@@ -32,7 +33,6 @@
     height: 50px;
     
     border-radius: 50%;
-    border:0;
 }
 .inputPost__section{
     display: flex;
@@ -107,106 +107,56 @@
 
 @media(max-width:480px){
     .addPost__section{
-        /* width:fit-content; */
-        display: flex;
-        width:100%;
-        justify-content: center;
+        justify-content: flex-end;
     }
     .addPost__wrapper{
-        border-radius: 6px;
-        background: white;
-        position: relative;
-       
-        width : 80%;
-        padding:4px 10px;
+        width : 85%;
+      
     }
     
     .userPhoto{
-        width:33px;
-        height: 33px;
-        position: absolute;
-        top:0;
-        left :0;
+        width:45px;
+        height: 45px;
+    
+        
+        
         transform: translate(-110%,15%);
-        border:1px solid var(--primary-color);
-        border-radius: 50%;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        border:2px solid var(--primary-color);
+
     
     }
     .userPhoto >img{
-        width: 30px;
-        height: 30px;
-        
-        border-radius: 50%;
-        border:0;
+        width: 39px;
+        height: 39px;
     }
     .inputPost__section{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         padding:5px;
         
     }
     .inputPost__btn{
-        display: flex;
-        justify-content: space-between;
         margin-top:5px;
-        align-items: center;
+    
         font-size: 16px;
     }
     
     .postBtn{
-        padding: 8px;
-        width:fit-content;
-        background: var(--black);
-        border-radius: 4px;
-        color: white;
-        font-weight: 600;
-        font-size: 16px;
-        letter-spacing: 0px;
-        /* border :1px solid black; */
+        padding: 6px;
+        font-size: 14px;
     }
     
     .inputPost__section >textarea{
-        /* height: 90px; */
-        border:0px;
-        
         font-size: 16px;
-        outline : none;
+      
     }
-    .inputPost__section >textarea::placeholder{
-        color:black;
-    }
-    #imageInput{
-        display: none;
-    }
-    
-    .imagePreview{
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-    }
+
     
     .preview{
         width :60px;
-        position:relative;
-        margin :5px;
-        padding:8px;
-        background-color: rgb(235, 233, 233);
-        border-radius: 4px;
     
     }
     .preview >img{
         width:50px;
         height: 50px;
     }
-    .cancelPreview{
-        position:absolute;
-        top : -10px;
-        right: -10px;
-        font-size: 20px;
-        color:red;
-    }
-    
     
 }

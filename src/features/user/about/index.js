@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./style.css";
-import {useDispatch} from 'react-redux'
+import {useDispatch , useSelector} from 'react-redux'
 import { RiEditLine , RiCloseCircleFill} from "react-icons/ri";
 import {editProfile} from "../userSlice"
+import Loader from "../../../component/loader"
 function About(props) {
   const { user, isAdmin } = props;
   const dispatch = useDispatch();
+  const {status}= useSelector((state)=>state.user)
   const {username , email , dateOfBirth,bio,website} = user;
   
 
@@ -35,7 +37,10 @@ function About(props) {
   };
 
   return (
-    <div className="pd__aboutContainer">
+    <>
+    {status === "loading" && <Loader/>}
+    {
+      status === "success" && <div className="pd__aboutContainer">
       {edit && <div className="editAbout__form">
         
         <form onSubmit ={handleSubmit}>
@@ -76,6 +81,7 @@ function About(props) {
       </div>
       
     </div>
+}</>
   );
 }
 

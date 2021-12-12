@@ -15,11 +15,11 @@ import {
 } from "../../features/user/userSlice";
 import Loader from "../../component/loader"
 function Profile() {
-  let [subPage, setSubPage] = useState("userPost");
-  let { otherUsers , status } = useSelector((state) => state.user);
+  let [subPage, setSubPage] = useState("post");
+  let { user , otherUsers , status } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
-  const user = otherUsers?.find(({ _id }) => _id === userId);
+  user = user._id === userId ? user :  otherUsers?.find(({ _id }) => _id === userId);
   const admin = useSelector((state) => state?.user?.user);
   const isAdmin = user?._id === admin?._id;
 
@@ -31,7 +31,7 @@ function Profile() {
         <section className="profileLayout__wrapper">
         <div className="profileHeader__img">
           <div className="pd__img">
-            <img src={user.displayPic} alt="/" />
+            <img src={user?.displayPic} alt="/" />
             {isAdmin && (
               <label htmlFor="picChange" className="pd__imgEditBtn">
                 <RiCamera3Line />
@@ -54,14 +54,14 @@ function Profile() {
           <div className ="pd__NameContainer">
             <div className="pd__Name">
               <span>@</span>
-              {user.username}
+              {user?.username}
             </div>
             {!isAdmin && <button>Follow</button>}
           </div>
           <div className="profileBio">
-            <p>{user.bio}</p>
-            <a href={user.website}>
-              <HiLink/><span>{user.website}</span>
+            <p>{user?.bio}</p>
+            <a href={user?.website}>
+              <HiLink/><span>{user?.website}</span>
             </a>
           </div>
           
@@ -70,36 +70,44 @@ function Profile() {
       <div className="profileButton__wrapper">
             <ProfileButton
               name="About"
+              label = "about"
               onClick={() => setSubPage("about")}
               subPage={subPage}
+              
             />
             <ProfileButton
               name={`Post(${user.post.length})`}
-              onClick={() => setSubPage("userPost")}
+              label= "post"
+              onClick={() => setSubPage("post")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Followers(${user.followers.length})`}
-              onClick={() => setSubPage("follower")}
+              name={`Followers(${user?.followers.length})`}
+              label = "followers"
+              onClick={() => setSubPage("followers")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Following(${user.following.length})`}
+              name={`Following(${user?.following.length})`}
+              label = "following"
               onClick={() => setSubPage("following")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Saved(${user.savePost.length})`}
-              onClick={() => setSubPage("save")}
+              name={`Saved(${user?.savePost.length})`}
+              label = "saved"
+              onClick={() => setSubPage("saved")}
               subPage={subPage}
             />
           </div>
       <div className="profileData">
         <div className="profileData__wrapper">
-          {subPage === "userPost" && <UserPost user={user} isAdmin={isAdmin} />}
+          {subPage === "post" && <UserPost user={user} isAdmin={isAdmin} />}
           {subPage === "about" && <About user={user} isAdmin={isAdmin} />}
-          {subPage === "follower" && <UserDataPage user={{data : user.followers , title  :"Followers"}} isAdmin={isAdmin} />}
-          {subPage === "save" && (
+          {subPage === "followers" && <UserDataPage user={{data : user.followers , title  :"Followers"}} isAdmin={isAdmin} />}
+          {subPage === "following" && <UserDataPage user={{data : user.following , title  :"Following"}} isAdmin={isAdmin} />}
+          
+          {subPage === "saved" && (
             <UserSavePost />
           )}
         </div>
