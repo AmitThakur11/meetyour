@@ -21,8 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
-// https://meetyourbackend.herokuapp.com
-  axios.defaults.baseURL = "http://localhost:8000";
+  axios.defaults.baseURL = "https://meetyourbackend.herokuapp.com";
   axios.defaults.headers.common["Authorization"] = JSON.parse(
     localStorage?.getItem("auth")
   )?.token;

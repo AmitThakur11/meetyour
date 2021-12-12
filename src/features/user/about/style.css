@@ -1,6 +1,7 @@
 .pd__about{
     min-height: 300px;
     background: white;
+    
 }
 
 .pd__aboutContainer{
@@ -60,4 +61,49 @@
     cursor:pointer;
     color:var(--primary-color);
     background: black;
+}
+
+.editAbout__form {
+    position: fixed;
+    z-index: 9999;
+    top:20vh;
+
+}
+.editAbout__form >form{
+    background-color: rgb(165, 134, 250);
+
+
+}
+.saveEdit__btn{
+    background-color: black;
+    font-size: 18px;
+width: 100%;
+    font-weight:600;
+    height: 40px;
+    border-radius: 4px;
+    color:white
+}
+
+.editInput{
+    width: 100%;
+    min-height: 40px;
+    margin-bottom:10px;
+    border-radius: 4px;
+    padding:5px 10px;
+}
+
+.editTextarea{
+    height: 80px;
+    width: 100%;
+    padding:5px 10px;
+
+}
+
+.cancelEdit{
+    font-size: 24px;
+    margin-bottom: 10px;
+    width: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }

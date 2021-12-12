@@ -51,11 +51,18 @@ export const followUser = createAsyncThunk("user/follow",async({toFollow})=>{
 
 })
 
-export const savePost = createAsyncThunk("post/save",async(postId)=>{
+export const savePost = createAsyncThunk("user/savePost",async(postId)=>{
     console.log(postId)
     const response = await axios.post(`/post/save/${postId}`);
     console.log(response.data.data)
     return response.data.data
+})
+
+export const editProfile = createAsyncThunk("user/edit", async(updateData)=>{
+    const response = await axios.post("user/editprofile",updateData);
+    console.log(response.data)
+
+
 })
 
 
@@ -131,7 +138,11 @@ const userSlice = createSlice({
             console.log(payload)
             state.user.savePost = payload
 
-        }
+        },
+        // [editProfile.fulfilled]:(state,{payload})=>{
+        //     console.log(payoad)
+        // }
+
         
     }
 })
