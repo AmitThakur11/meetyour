@@ -23,7 +23,7 @@ function Header() {
     console.log(searchData)
 
     return (
-        <nav className ="header">
+        <nav  className ="header">
             <Link to="/">
             <section className ="logo">
                 <img src={Logo} alt="logo"/>

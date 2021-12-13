@@ -14,9 +14,7 @@
     /* display: none; */
     position: absolute;
 }
-#addPost__area{
-    display: none;
-}
+
 
 @media(max-width:780px) {
     .home {
@@ -122,9 +120,6 @@
         color:rgb(88, 10, 255);
     
     }
-    #addPost__area{
-        display: block;
-    }
-
+   
     
 }

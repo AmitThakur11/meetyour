@@ -223,7 +223,7 @@
     }
     .profileData__wrapper{
         margin:0;
-        width: fit-content;
+        width: 100%;
     }
     .userPostImg{
         width: 6rem;

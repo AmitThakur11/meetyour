@@ -107,3 +107,150 @@ width: 100%;
     justify-content: flex-end;
     width: 100%;
 }
+.editPost__section{
+    position: relative;
+}
+/* .editPost__wrapper{
+    
+    width: 100px;
+    height: 100px;
+} */
+.editPost__modal{
+    position: absolute;
+    width: 100px;
+    /* height: 100px; */
+    line-height: 34px;
+    right: 0;
+    background: rgb(255, 255, 255);
+    padding: 4px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+}
+@media(max-width: 480px){
+
+    .pd__about{
+        min-height: 300px;
+        background: white;
+        
+    }
+    
+    .pd__aboutContainer{
+    font-size: 16px;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+        
+    
+    
+    }
+    
+    .aboutItem >div{
+        white-space: nowrap; 
+  width: 80%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  border: 1px solid #000000;
+    }
+    
+    
+    
+    .aboutContainer__wrapper{
+        background-color: #ffffff;
+        width :100%;
+        margin-top: 20px;
+        padding:6px 12px;
+        position: relative;
+
+
+    }
+    
+    .aboutItem{
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        line-height: 36px;
+    
+    }
+    .aboutItem > div{
+        background-color: var(--light-primary);
+        color:white;
+        width: fit-content;
+        font-weight: 500;
+        padding:6px 12px;
+        border-radius: 5px;
+    }
+    
+    .pd__editBtn{
+        position: absolute;
+        top:10px;
+        right: 10px;
+        font-size: 24px;
+        background-color: rgb(233, 232, 232);
+        width: 40px;
+        display: flex;
+        place-items: center;
+        justify-content: center;
+        height: 40px;
+        border-radius: 50%;
+        transition: ease-in-out 300ms;
+    
+    
+    }
+    
+    .pd__editBtn:hover{
+        transform: scale(1.1);
+        cursor:pointer;
+        color:var(--primary-color);
+        background: black;
+    }
+    
+    .editAbout__form {
+        position: fixed;
+        z-index: 9999;
+        top:20vh;
+    
+    }
+    .editAbout__form >form{
+        background-color: rgb(165, 134, 250);
+    
+    
+    }
+    .saveEdit__btn{
+        background-color: black;
+        font-size: 18px;
+    width: 100%;
+        font-weight:600;
+        height: 40px;
+        border-radius: 4px;
+        color:white
+    }
+    
+    .editInput{
+        width: 100%;
+        min-height: 40px;
+        margin-bottom:10px;
+        border-radius: 4px;
+        padding:5px 10px;
+    }
+    
+    .editTextarea{
+        height: 80px;
+        width: 100%;
+        padding:5px 10px;
+    
+    }
+    
+    .cancelEdit{
+        font-size: 24px;
+        margin-bottom: 10px;
+        width: fit-content;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+
+
+
+}

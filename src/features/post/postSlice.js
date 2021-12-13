@@ -26,6 +26,12 @@ export const addComment = createAsyncThunk("post/comment",async({postId, comment
     return {response : response.data.data.comment , postId : postId }
 })
 
+export const editPost = createAsyncThunk("post/edit",async({caption,postId})=>{
+    const response = await axios.post(`/post/edit/${postId}`,{caption});
+    return response.data.data
+
+})
+
 
 
 
@@ -72,6 +78,12 @@ const postSlice = createSlice({
         [addComment.fulfilled] :(state,{payload})=>{
             const findPost = state.posts.findIndex((post)=>post._id === payload.postId);
             state.posts[findPost].comments.unshift(payload.response)
+        },
+        [editPost.fulfilled]:(state,{payload})=>{
+            
+            const postIndex = state.posts.findIndex((post)=>post._id === payload._id);
+        
+            state.posts[postIndex].caption = payload.caption
         }
         
 

@@ -30,10 +30,10 @@ function Home() {
         }
     )
     return (
-        <div className ="home">
+        <div id="addPost__area" className ="home">
+      
             
-            <div id ="addPost__area"></div>
-           
+            
             <SideBarLeft on ={switches.menu}/>
             
             

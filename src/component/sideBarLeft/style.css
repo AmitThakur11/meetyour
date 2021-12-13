@@ -4,6 +4,7 @@
     border-radius: 6px;
     background: white;
     width: 15%;
+    max-width: fit-content;
     margin-right: 1em;
     height: 460px;
     display: flex;
