@@ -40,8 +40,8 @@
 .postTime{
     flex:1;
     text-align: right;
-    color:red;
-    font-size: 16px;
+    color:grey;
+    font-size: 12px;
 }
 
 .postReaction{

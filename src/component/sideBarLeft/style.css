@@ -43,9 +43,9 @@
     /* align-items: center; */
 
 .bar-one > img{
-    width:100%;
+    width:130px;
     margin-bottom: 10px;
-    height: auto;
+    height:130px;
     cursor: pointer;
     border-radius: 50%;
     border:2px solid var(--red);
@@ -61,10 +61,10 @@
   .leftSideBar{
     padding: 10px;
   }
-  /* .bar-one >img{
-    width: 120px;
-    height: 120px;
-  } */
+  .bar-one >img{
+    width: 100px;
+    height: 100px;
+  }
 
 }
 
@@ -129,9 +129,9 @@
 /* } */ */
 
 .bar-one > img{
-    max-width:60%;
+
     margin-bottom: 10px;
-    height: auto;
+
     cursor: pointer;
     border-radius: 50%;
     border:2px solid var(--red);

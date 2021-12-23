@@ -2,7 +2,7 @@
     background: white;
     border-radius: 6px;
 
-    height: 480px;
+    height: fit-content;
     position: sticky;
     top:120px;
 }
@@ -42,6 +42,17 @@
   padding: 5px;
   border-radius: 50%;
   display: inline-flex;
+}
+
+.exploreBtn{
+  width: 95%;
+  background-color: var(--primary-color);
+  border:0;
+  height: 30px;
+  font-weight: 700;
+  color:white;
+  border-radius: 4px;
+
 }
 @media(max-width:780px){
   .rightSideBar{

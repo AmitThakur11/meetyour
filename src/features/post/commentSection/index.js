@@ -11,7 +11,6 @@ function CommentSection(props) {
     setDisplayComment((comment) => {
       return { ...comment, commentQty: 1 };
     });
-  // const [commentList, setCommentList] = useState(false);
 
   return (
     <>
@@ -37,7 +36,7 @@ function CommentSection(props) {
           {post.comments.slice(0, displayComment.commentQty).map((comment) => {
             return (
               <section className="comment">
-                <CommentCard comment={comment} />
+                <CommentCard comment={comment} post ={post} />
               </section>
             );
           })}
@@ -45,7 +44,7 @@ function CommentSection(props) {
             
                {post.comments.length > displayComment.commentQty && displayComment.commentQty > 0 && <div onClick={() => moreComment()}>show more</div>}
        
-              {post.comments.length <= displayComment.commentQty && <div onClick={() => hideComment()}>hide comments</div>}
+              {post.comments.length !== 0 && (post.comments.length < displayComment.commentQty) && <div onClick={() => hideComment()}>hide comments</div>}
             
           </div>
         </>

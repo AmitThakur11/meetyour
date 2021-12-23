@@ -1,10 +1,14 @@
 import AddPost from "../addPost";
 import PostCard from "../postCard";
 import "./style.css"
+import { useEffect } from "react";
 import Loader from "../../../component/loader";
-import { useSelector } from "react-redux";
+import axios from "axios"
+import { useSelector , useDispatch } from "react-redux";
+import {getPosts} from "../postSlice"
 function Timeline() {
   let { posts, status } = useSelector((state) => state.post);
+  const dispatch = useDispatch()
   return (
     <section className="timeline">
       {status === "loading" && <Loader />}

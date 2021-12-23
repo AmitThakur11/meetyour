@@ -16,19 +16,23 @@
 
 .sP__postImg{
     max-width:50%;
-    height:70vh ;
+    max-height: 60vh;
+    height: auto;
 }
 .sP__postDetail{
     display: flex;
     flex-direction: column;
     flex:1;
-    width : 200px
+    width : 200px;
+    padding:10px;
+
 
 }
 .sP__userDetail{
     display: flex;
-    margin:10px;
+    /* margin:10px; */
     place-items: center;
+    margin-bottom: 10px;
 }
 .sP__userPic{
     width:50px;
@@ -44,7 +48,7 @@
 
 .sP__Caption{
     background: rgb(230, 228, 228);
-    margin:10px;
+    /* margin:10px; */
     min-height:60px;
     padding:10px;
 
@@ -58,11 +62,13 @@ justify-content: flex-end;}
 .editPost__modal{
     position: absolute;
     width: 100px;
+    top:-5px;
+
     display: flex;
     flex-direction: column;
     /* height: 100px; */
     line-height: 34px;
-    right: 0;
+    right: 15px;
     background: rgb(255, 255, 255);
     padding: 4px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

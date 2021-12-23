@@ -6,7 +6,7 @@ const initialState = {
     otherUsers : [],
     otherUserProfile : {},
     status : 'loading',
-    login : localStorage?.getItem('auth') ? true : false,
+    login : JSON.parse(localStorage?.getItem('auth'))?.login,
 
 }
 
@@ -32,7 +32,6 @@ export const fetchUser = createAsyncThunk("/user/detail",async()=>{
 
 export const allUsers = createAsyncThunk("/user/all",async()=>{
     const response = await axios.get("/user/all");
-    console.log(response.data.data)
     return response.data.data
 })
 
@@ -52,9 +51,7 @@ export const followUser = createAsyncThunk("user/follow",async({toFollow})=>{
 })
 
 export const savePost = createAsyncThunk("user/savePost",async(postId)=>{
-    console.log(postId)
     const response = await axios.post(`/post/save/${postId}`);
-    console.log(response.data.data)
     return response.data.data
 })
 
@@ -65,7 +62,10 @@ export const editProfile = createAsyncThunk("user/edit", async(updateData)=>{
 
 })
 
-
+export const deletePost = createAsyncThunk("post/delete",async(postId)=>{
+    const response = await axios.delete(`post/delete/${postId}`);
+    return {data : response.data.data , postId  :  postId }
+})
 
 
 // export const seeProfile = createAsyncThunk("user/profile",async({userId})=>{
@@ -77,6 +77,7 @@ const userSlice = createSlice({
     initialState,
     reducers : {
         logout : (state,action)=>{
+            console.log(JSON.parse(localStorage?.getItem('auth'))?.login)
             localStorage.removeItem('auth')
             state.login = false;
         }
@@ -118,6 +119,11 @@ const userSlice = createSlice({
             state.status = "success"
             state.login=true
         },
+        [fetchUser.rejected]:(state,action)=>{
+            localStorage.removeItem('auth');
+            state.login = false
+            state.success ="failed"
+        },
         [followUser.fulfilled]:(state,{payload})=>{
             const {user, userYouFollow} = payload
             const toFollowIndex = state.otherUsers.findIndex((user)=>user._id === userYouFollow._id);
@@ -126,14 +132,11 @@ const userSlice = createSlice({
             console.log(toFollowIndex)
             state.status = "success"
         },
-        [fetchUser.rejected]:(state,action)=>{
-            state.status = "failed"
-        },
         [changeProfilePic.pending]:(state,action)=>{
             state.status ="loading"
         },
         [changeProfilePic.fulfilled]:(state,{payload})=>{
-            console.log(payload)
+            
             state.user.displayPic = payload.displayPic;
 
             state.status = "success"
@@ -143,6 +146,11 @@ const userSlice = createSlice({
         },
         [allUsers.fulfilled]:(state,{payload})=>{
             state.otherUsers = payload;
+        },
+        [allUsers.rejected]:(state,payload)=>{
+            // localStorage.removeItem("auth")
+            state.status = "failed"
+
         },
         [savePost.fulfilled]:(state,{payload})=>{
             console.log(payload)
@@ -164,6 +172,15 @@ const userSlice = createSlice({
         [editProfile.rejected]:(state,action)=>{
             state.status="error"
 
+        },
+        [deletePost.fulfilled]:(state,{payload})=>{
+            const {postId} = payload
+            const updateUserPosts = state.user.post.filter((post)=>post._id === postId)
+            const updateUsersavePosts = state.user.savePost.filter((post)=>post._id === postId)
+
+            toast.success("Post removed")
+            state.user.post = updateUserPosts
+            state.user.savePost = updateUsersavePosts
         }
         }
 

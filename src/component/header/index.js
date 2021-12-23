@@ -74,7 +74,11 @@ function Header() {
                 <Link to ={`/profile/${user._id}`} >
                     <span onClick={()=>setUserOption(false)}>Profile</span>
                 </Link>
-                <span onClick={()=>logoutHandler()}>Log out</span>
+                <span onClick={()=>{
+                    logoutHandler()
+                    setUserOption(false)
+                }
+                    }>Log out</span>
                 </div>}
 
                 </div>

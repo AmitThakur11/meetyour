@@ -1,33 +1,42 @@
 import "./style.css";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useSelector , useDispatch } from "react-redux";
 import PostReaction from "../../features/post/postReaction";
 import CommentSection from "../../features/post/commentSection";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate} from "react-router-dom";
 import Loader from "../../component/loader";
 import { IoMdTrash } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { AiFillEdit } from "react-icons/ai";
-import { editPost } from "../../features/post/postSlice";
+import {editPost } from "../../features/post/postSlice";
+import { deletePost } from "../../features/user/userSlice";
+import axios from "axios"
 
 
-export function EditPostButton({ setEditForm,...props }) {
-  const [editPost , setEditPost] = useState(false);
+export function EditPostButton({ setEditForm,post , ...props }) {
+  const [edit , setEdit] = useState(false);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   return (
     <section className="editPost__section">
-      <label onClick={() => setEditPost(!editPost)}>
+      <label onClick={() => setEdit(!edit)}>
         <HiOutlineDotsVertical />
       </label>
 
-      {editPost && (
+      {edit && (
         <div className="editPost__modal">
-          <label onClick={()=>{
-            setEditPost(false)
+          <label onClick={async()=>{
+            
+
+            setEdit(false)
+            await dispatch(deletePost(post._id))
+            navigate("/")
+            
           }}>
             <IoMdTrash /> Delete
           </label>
           <label onClick={()=>{
-            setEditPost(false)
+            setEdit(false)
             setEditForm(true)
           }}>
             <AiFillEdit /> Edit
@@ -48,7 +57,6 @@ function PostEditForm({post , setEditForm,...props}){
               <textarea placeholder="edit caption..." value = {captionText} onChange={(e)=>setCaptionText(e.target.value)} />
               <div className ="postEdit__btn">
                 <button onClick = {()=>{
-                  console.log(post._id)
                   dispatch(editPost({caption : captionText,postId : post._id}))
                   setEditForm(false)
                 }}>Save</button>
@@ -64,36 +72,52 @@ function ShowPost() {
     inputComment: true,
     commentQty: 1,
   });
+  const {user} = useSelector((state)=>state.user)
   const [editForm , setEditForm] = useState(false)
+  const [post , setPost] = useState({})
   const { posts, status } = useSelector((state) => state.post);
+  const [loader , setLoader] = useState(true)
   const { postId } = useParams();
-  const post = posts.find(({ _id }) => _id === postId);
 
+
+  const isAdmin = true
+  useEffect(()=>{
+    (async()=>{
+      try{
+        setLoader(true)
+        const response = await axios.get(`/post/${postId}`);
+        setPost(response.data.data)
+        
+        setLoader(false)
+
+      }catch(err){
+        setLoader(false)
+      }
+
+    })()
+  },[postId,posts])
   return (
     <div className="showPost">
-      {status === "loading" && <Loader />}
-      {status === "success" && (
-        <>
-          {" "}
-          <div className="showPost__wrapper">
+      
+      {loader?<Loader/> :  <div className="showPost__wrapper">
             {editForm && <PostEditForm post = {post} setEditForm= {setEditForm}/>}
             
-            <img className="sP__postImg" src={post.media[0]} alt="posts" />
+            <img className="sP__postImg" src={post?.media[0]} alt="posts" />
             <div className="sP__postDetail">
               <div className="sP__userDetail">
                 <img
                   className="sP__userPic"
-                  src={post.author.displayPic}
+                  src={post?.author.displayPic}
                   alt="user"
                 />
-                <p className="sP__username">@{post.author.username}</p>
-                <div className="postEdit__wrapper">
+                <p className="sP__username">@{post?.author.username}</p>
+                {isAdmin && <div className="postEdit__wrapper">
                   <EditPostButton
-                    setEditForm={setEditForm}
+                    setEditForm={setEditForm} post ={post}
                   />
-                </div>
+                </div>}
               </div>
-              <div className="sP__Caption">{post.caption}</div>
+              <div className="sP__Caption">{post?.caption}</div>
               <PostReaction post={post} setDisplayComment={setDisplayComment} />
               <CommentSection
                 displayComment={displayComment}
@@ -102,8 +126,8 @@ function ShowPost() {
               />
             </div>
           </div>
-        </>
-      )}
+      }
+
     </div>
   );
 }

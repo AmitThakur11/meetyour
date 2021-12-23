@@ -1,5 +1,6 @@
-import { useState} from "react";
+import { useState , useEffect} from "react";
 import "./style.css";
+import axios from "axios"
 import { RiCamera3Line } from "react-icons/ri";
 import {HiLink} from "react-icons/hi"
 import ProfileButton from "../../features/user/ProfileButton/index";
@@ -8,30 +9,52 @@ import UserPost from "../../features/user/userPosts";
 import UserDataPage from "../../features/user/userDataPage";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import UserSavePost from "../../features/user/userSavePost";
 
 import {
   changeProfilePic
 } from "../../features/user/userSlice";
 import Loader from "../../component/loader"
+import { FaGalacticSenate } from "react-icons/fa";
 function Profile() {
   let [subPage, setSubPage] = useState("post");
+  let [profile , setProfile] = useState([])
+  let [loader , setLoader] = useState(false)
   let { user , otherUsers , status } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
-  user = user._id === userId ? user :  otherUsers?.find(({ _id }) => _id === userId);
-  const admin = useSelector((state) => state?.user?.user);
-  const isAdmin = user?._id === admin?._id;
+
+  
+  const isAdmin = user?._id === userId;
+
+  useEffect(()=>{
+    (async()=>{
+      try{
+        setLoader(true)
+        if(!isAdmin){
+          const response = await axios.get(`/user/profile/${userId}`)
+          setProfile(response.data.data)
+        }
+        else{
+          setProfile(user)
+        }
+        setLoader(false)
+      
+      }catch(err){
+        setLoader(false)
+      }
+      
+    })()
+  },[userId,user])
 
   return (
     <section className="profileLayout">
-      {status ==="loading" && <Loader/>}
+      {loader && <Loader/>}
       {
-       status === "success" &&  <>
+       !loader &&  <>
         <section className="profileLayout__wrapper">
         <div className="profileHeader__img">
           <div className="pd__img">
-            <img src={user?.displayPic} alt="/" />
+            <img src={profile?.displayPic} alt="/" />
             {isAdmin && (
               <label htmlFor="picChange" className="pd__imgEditBtn">
                 <RiCamera3Line />
@@ -54,14 +77,14 @@ function Profile() {
           <div className ="pd__NameContainer">
             <div className="pd__Name">
               <span>@</span>
-              {user?.username}
+              {profile?.username}
             </div>
             {!isAdmin && <button>Follow</button>}
           </div>
           <div className="profileBio">
-            <p>{user?.bio}</p>
-            <a href={user?.website}>
-              <HiLink/><span>{user?.website}</span>
+            <p>{profile?.bio}</p>
+            <a href={profile?.website}>
+              <HiLink/><span>{profile?.website}</span>
             </a>
           </div>
           
@@ -76,39 +99,38 @@ function Profile() {
               
             />
             <ProfileButton
-              name={`Post(${user.post.length})`}
+              name={`Post(${profile?.post?.length})`}
               label= "post"
               onClick={() => setSubPage("post")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Followers(${user?.followers.length})`}
+              name={`Followers(${profile?.followers?.length})`}
               label = "followers"
               onClick={() => setSubPage("followers")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Following(${user?.following.length})`}
+              name={`Following(${profile?.following?.length})`}
               label = "following"
               onClick={() => setSubPage("following")}
               subPage={subPage}
             />
-            <ProfileButton
-              name={`Saved(${user?.savePost.length})`}
+            {isAdmin && <ProfileButton
+              name={`Saved(${profile?.savePost?.length})`}
               label = "saved"
               onClick={() => setSubPage("saved")}
               subPage={subPage}
-            />
+            />}
           </div>
       <div className="profileData">
         <div className="profileData__wrapper">
-          {subPage === "post" && <UserPost user={user} isAdmin={isAdmin} />}
-          {subPage === "about" && <About user={user} isAdmin={isAdmin} />}
-          {subPage === "followers" && <UserDataPage user={{data : user.followers , title  :"Followers"}} isAdmin={isAdmin} />}
-          {subPage === "following" && <UserDataPage user={{data : user.following , title  :"Following"}} isAdmin={isAdmin} />}
-          
-          {subPage === "saved" && (
-            <UserSavePost />
+          {subPage === "post" && <UserPost post={profile.post} isAdmin={isAdmin}/>}
+          {subPage === "about" && <About user={profile} isAdmin={isAdmin} />}
+          {subPage === "followers" && <UserDataPage user={{data : profile.followers , title  :"Followers"}} isAdmin={isAdmin} />}
+          {subPage === "following" && <UserDataPage user={{data : profile.following , title  :"Following"}} isAdmin={isAdmin} />}
+          {subPage === "saved"  && (
+            <UserPost post={profile.savePost} isAdmin={isAdmin}  />
           )}
         </div>
       
@@ -120,7 +142,3 @@ function Profile() {
 
 export default Profile;
 
-// <div className ="about">
-//                     <div className = "about">On the way to become a Full stack deveoper.</div>
-//                     <a href ="http://localhost:3000"> http://localhost:3000</a>
-//                 </div>

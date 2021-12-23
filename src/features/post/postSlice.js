@@ -32,6 +32,12 @@ export const editPost = createAsyncThunk("post/edit",async({caption,postId})=>{
 
 })
 
+export const deleteComment = createAsyncThunk("/delete/comment",async(data)=>{
+    const response = await axios.delete(`comment/${data.postId}/delete/${data.commentId}`);
+    console.log(response.data.data);
+})
+
+
 
 
 
@@ -43,11 +49,7 @@ const initialState = {
 const postSlice = createSlice({
     name :"post",
     initialState,
-    reducers : {
-        uploadPost : (state,action)=>{
-            return state
-        }
-    },
+    reducers : {},
     extraReducers :{
         [getPosts.pending]: (state,action)=>{
             state.status ='loading'
@@ -57,6 +59,8 @@ const postSlice = createSlice({
             state.status = 'success'
         },
         [getPosts.rejected] : (state,action)=>{
+            // localStorage.removeItem('auth')
+            // console.log("failed")
             state.status = "failed"
         },
         [addPost.pending]: (state,action)=>{
@@ -82,7 +86,7 @@ const postSlice = createSlice({
         [editPost.fulfilled]:(state,{payload})=>{
             
             const postIndex = state.posts.findIndex((post)=>post._id === payload._id);
-        
+
             state.posts[postIndex].caption = payload.caption
         }
         

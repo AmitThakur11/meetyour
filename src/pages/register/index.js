@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 // import {getUser} from "../../features/user/userSlice"
 import {register} from "../../features/user/userSlice"
 import {useState} from 'react'
+import { useNavigate } from 'react-router';
 import {useDispatch} from "react-redux"
 function Register() {
   document.title ='Register';
@@ -16,7 +17,7 @@ function Register() {
     cpassword : ""
   })
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
   const inputFieldData = [
     {
@@ -78,9 +79,10 @@ function Register() {
     })
 
   }
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault();
-    dispatch(register(userInput))
+    await dispatch(register(userInput))
+    navigate("/")
 
   }
   return (

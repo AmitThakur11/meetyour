@@ -10,7 +10,7 @@ const TimeAgo = ({ timestamp , style }) => {
   }
 
   return (
-    <div style = {style}>
+    <div>
     <i>{timeAgo}</i>
     </div>
   )

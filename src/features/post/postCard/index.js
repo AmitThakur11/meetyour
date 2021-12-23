@@ -22,7 +22,6 @@ function PostCard(props) {
           <div className ="postTime">
             <TimeAgo
             timestamp={post.createdAt}
-            
           />
           </div>
         </div>

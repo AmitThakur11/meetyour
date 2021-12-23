@@ -32,6 +32,7 @@ function SideBarRight({on}) {
                 return   others && <FollowCard user={others}/>
             })
         }
+        <button className ="exploreBtn">See more</button>
         
       
         
