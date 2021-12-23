@@ -72,10 +72,10 @@ function ShowPost() {
     inputComment: true,
     commentQty: 1,
   });
-  const {user} = useSelector((state)=>state.user)
+  // const {user} = useSelector((state)=>state.user)
   const [editForm , setEditForm] = useState(false)
   const [post , setPost] = useState({})
-  const { posts, status } = useSelector((state) => state.post);
+  const { posts } = useSelector((state) => state.post);
   const [loader , setLoader] = useState(true)
   const { postId } = useParams();
 

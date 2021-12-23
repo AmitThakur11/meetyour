@@ -14,12 +14,11 @@ import {
   changeProfilePic
 } from "../../features/user/userSlice";
 import Loader from "../../component/loader"
-import { FaGalacticSenate } from "react-icons/fa";
 function Profile() {
   let [subPage, setSubPage] = useState("post");
   let [profile , setProfile] = useState([])
   let [loader , setLoader] = useState(false)
-  let { user , otherUsers , status } = useSelector((state) => state.user);
+  let { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
 
@@ -44,7 +43,7 @@ function Profile() {
       }
       
     })()
-  },[userId,user])
+  },[userId,user,isAdmin])
 
   return (
     <section className="profileLayout">

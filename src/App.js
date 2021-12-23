@@ -8,7 +8,7 @@ import Login from "./pages/login";
 import ShowPost from "./pages/ShowPost";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
-import { fetchUser ,allUsers ,logout } from "./features/user/userSlice";
+import { fetchUser,logout } from "./features/user/userSlice";
 
 import { getPosts } from "./features/post/postSlice";
 import PageNotFound from "./pages/pageNotFound";

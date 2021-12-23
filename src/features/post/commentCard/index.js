@@ -10,7 +10,7 @@ import {deleteComment} from "../postSlice"
 
 
 export function EditPostButton({ setEditForm,comment , ...props }) {
-  const {user} = useSelector(state => state.user)
+  // const {user} = useSelector(state => state.user)
   const [edit , setEdit] = useState(false);
   
   const dispatch = useDispatch()
@@ -46,8 +46,9 @@ function CommentCard(props) {
   const { user } = useSelector((state) => state.user);
   const { input, comment, post, style } = props;
   const [commentText, setCommentText] = useState("");
-  const [edit , setEdit] = useState(false)
+  // const [edit , setEdit] = useState(false)
   const [editForm ,setEditForm] = useState(false)
+  console.log(editForm)
   const dispatch = useDispatch();
   return (
     <section className="commentWrapper" style={style}>
