@@ -26,6 +26,8 @@ export const login = createAsyncThunk("user/login",async(userData)=>{
 
 export const fetchUser = createAsyncThunk("/user/detail",async()=>{
     const response = await axios.get("/user/userProfile");
+
+    console.log("fetchuser")
     return response.data.data
 
 })
