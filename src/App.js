@@ -7,8 +7,7 @@ import Register from "./pages/register";
 import Login from "./pages/login";
 import ShowPost from "./pages/ShowPost";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { fetchUser,logout } from "./features/user/userSlice";
+import { fetchUser} from "./features/user/userSlice";
 import { getPosts } from "./features/post/postSlice";
 import PageNotFound from "./pages/pageNotFound";
 import PrivateRoute from "./features/user/privateRoute"
@@ -16,7 +15,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch , useSelector } from "react-redux";
 import axiosInitializer from "./utils/axiosInitializer";
-import { MdLogin } from "react-icons/md";
+
 
 
 
@@ -30,8 +29,8 @@ function App() {
     (async () => {
       if(login){
         
-        dispatch(fetchUser());
-        dispatch(getPosts())
+        dispatch(()=>fetchUser());
+        dispatch(()=>getPosts())
       }
       
     })();

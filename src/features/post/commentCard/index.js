@@ -89,7 +89,7 @@ function CommentCard(props) {
             className="commentBtn"
             onClick={() => {
               dispatch(
-                addComment({ postId: post._id, commentText: commentText })
+                ()=>addComment({ postId: post._id, commentText: commentText })
               );
               setCommentText("");
             }}
