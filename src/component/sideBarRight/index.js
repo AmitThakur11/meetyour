@@ -17,7 +17,7 @@ function SideBarRight({on}) {
     })
     console.log(exploreUsers)
     useEffect(() => {
-        dispatch(()=>allUsers())
+        dispatch(allUsers())
     }, [dispatch])
 
 

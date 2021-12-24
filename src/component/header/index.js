@@ -14,7 +14,7 @@ function Header() {
     const [searchText , setSearchText] =useState("")
     const [userOption, setUserOption] =useState(false)
     const {user ,otherUsers} = useSelector((state)=>state.user)
-    const searchData = otherUsers.filter((data)=> data.username.match(searchText))
+    const searchData = otherUsers.filter((data)=> data.username.match(searchText.toLocaleLowerCase()))
     const logoutHandler =()=>{
         dispatch(logout())
         setUserOption(false);
