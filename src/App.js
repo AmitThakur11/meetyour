@@ -28,9 +28,8 @@ function App() {
     
     (async () => {
       if(login){
-        
-        dispatch(()=>fetchUser());
-        dispatch(()=>getPosts())
+        dispatch(fetchUser());
+        dispatch(getPosts())
       }
       
     })();
