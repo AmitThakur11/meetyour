@@ -12,13 +12,10 @@ import {savePost} from "../../user/userSlice"
 function PostReaction(props) {
   const { post, setDisplayComment } = props;
   const { user } = useSelector((state) => state.user);
-  console.log(post)
   const isLiked = post?.like?.find((like) => like._id === user._id);
-  console.log(post.author);
-  console.log("userSavePost",user.savePost)
+ 
   const isSaved = (savePost)=>{
-    console.log(savePost?.find((saveItem) => saveItem === post._id) ? true : false )
-    console.log("postId",post._id)
+    
     return savePost?.find((saveItem) => saveItem._id === post._id) ? true : false
 
   }
@@ -51,8 +48,12 @@ function PostReaction(props) {
         <div className="reaction" onClick={() => dispatch(savePost(post._id))}>
           <label
             style={isLiked && { color: "var(--primary-color)" }}
-            onClick={() => dispatch(savePost(post._id))}
+            onClick={() =>{
+            console.log("clicked")
+            dispatch(()=>savePost(post._id))}
+            }
           >
+            {/* <IoBookmark /> */}
             {isSaved(user.savePost) ? <IoBookmark /> : <IoBookmarkOutline />}
           </label>
         </div>

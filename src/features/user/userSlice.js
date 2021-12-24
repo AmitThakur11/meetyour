@@ -54,6 +54,7 @@ export const followUser = createAsyncThunk("user/follow",async({toFollow})=>{
 
 export const savePost = createAsyncThunk("user/savePost",async(postId)=>{
     const response = await axios.post(`/post/save/${postId}`);
+    console.log(response.data)
     return response.data.data
 })
 
@@ -155,7 +156,6 @@ const userSlice = createSlice({
 
         },
         [savePost.fulfilled]:(state,{payload})=>{
-            console.log(payload)
             state.user.savePost = payload
 
         },
@@ -195,14 +195,3 @@ export default userSlice.reducer
 
 
 
-//   [seeProfile.pending]:(state,action)=>{
-//             // state.status ="loading"
-//         },
-//         [seeProfile.fulfilled]:(state,{payload})=>{
-//             console.log(payload)
-//             state.otherUserProfile = payload
-//             state.status = "success"
-//         },
-//         [seeProfile.rejected]:(state,action)=>{
-//             state.status = "failed"
-//         }
