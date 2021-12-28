@@ -56,7 +56,33 @@
 }
 @media(max-width:780px){
   .rightSideBar{
+    background: white;
+    border-radius: 6px;
+
+    height: 480px;
+    position: sticky;
+    top:110px;
     display: none;
+}
+.bar-two{
+  overflow-y: auto;
+  display: flex;
+  width: 22%;
+  flex-direction: column;
+  place-items: center;
+  padding: 10px;
+  /* display: none; */
+  position: fixed;
+  height: calc( 100vh - 60px );
+  right: 0;
+  top: 100px;
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  transition: 320ms ease-in-out;
+  transform: translateX(110%);
+}
+  .barOn{
+    transform: translate(0%);
   }
 }
 
@@ -104,9 +130,6 @@
   right: 0;
   top: 60px;
   width: 70%;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  transition: 320ms ease-in-out;
-  transform: translateX(110%);
 }
 .barOn{
   transform: translate(0%);

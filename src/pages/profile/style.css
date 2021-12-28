@@ -28,19 +28,27 @@
 }
 .pd__img{
     position: relative;
-}
-.pd__img >img{
     width :200px;
     height: 200px;
     border-radius: 50%;
     border:2px solid black;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pd__img >img{
+    width :200px;
+    height: 200px;
+    
+    border-radius: 50%;
     
 }
 .pd__imgEditBtn{
     position:absolute;
-    bottom:10%;
+    bottom:4%;
     font-size: 24px;
-    right: 10%;
+    right: 7%;
     cursor: pointer;
     background: white;
     width: 35px;
@@ -49,7 +57,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border:1px solid var(--primary-color)
+    border:2px solid var(--primary-color)
 }
 
 .pd__Name{
@@ -87,8 +95,14 @@
     min-height: 300px;
     background: white;
 }
+.profileButton__section{
+    width :100%;
+    display: flex;
+    justify-content: center;
+}
 .profileButton__wrapper{
     display: flex;
+    width: fit-content;
     justify-content: center;
     place-items: center;
     margin: 20px 0px;
@@ -162,15 +176,23 @@
         width: 100%;
         justify-content: space-around;
         padding:0px 5px;
+        margin-top: 1em;
         margin-bottom: 0;
         
     }
-    .pd__img >img{
+    .pd__img{
         width :80px;
         height: 80px;
         border-radius: 50%;
         border:2px solid black;
         
+    }
+    .pd__img >img{
+
+        width :80px;
+        height: 80px;
+        border-radius: 50%;
+
     }
     .pd__Name{
         font-size: 20px;
@@ -198,15 +220,14 @@
     .profileButton__wrapper{
         flex-wrap: wrap;
         justify-content:flex-start;
-        margin-left: 1em;
         margin-bottom: 10px;
     }
 
     .pd__imgEditBtn{
         
-        bottom:10%;
+ 
         font-size: 16px;
-        right: 10%;
+ 
         cursor: pointer;
         background: white;
         width:20px;

@@ -4,6 +4,7 @@ import {useDispatch,useSelector} from "react-redux"
 import {allUsers} from "../../features/user/userSlice"
 import {MdOutlineExplore } from "react-icons/md"
 import "./style.css"
+import { useNavigate } from 'react-router'
 
 function SideBarRight({on}) {
     const dispatch = useDispatch();
@@ -13,9 +14,8 @@ function SideBarRight({on}) {
         if(!followingId?.includes(otherUser._id)&& otherUser._id !== user._id){
             return otherUser
         }
-        return false
     })
-    console.log(exploreUsers)
+    const navigate = useNavigate()
     useEffect(() => {
         dispatch(allUsers())
     }, [dispatch])
@@ -28,11 +28,9 @@ function SideBarRight({on}) {
             </div>
             
         {
-            exploreUsers?.map((others)=>{
-                return   others && <FollowCard user={others}/>
-            })
+            exploreUsers.map((others,index)=> others &&<FollowCard user={others}/>)
         }
-        <button className ="exploreBtn">See more</button>
+        <button className ="exploreBtn" onClick = {()=>navigate("/explore")}>See more</button>
         
       
         

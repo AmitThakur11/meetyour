@@ -41,15 +41,15 @@ function Home() {
   
             <SideBarRight on = {switches.explore} />
             <div className="sideFloating__btnContainer">
-          <label onClick ={()=>switchBtn("explore")}>
+          <label id ="exploreBtn" onClick ={()=>switchBtn("explore")}>
             <MdOutlineExplore />
           </label>
           
-          <label>
+          <label id ="gotTo__addPost">
             <a href ="#addPost__area"><MdAddCircleOutline/></a>
           </label>
 
-          <label onClick ={()=>switchBtn("menu")}>
+          <label id ="menuBtn" onClick ={()=>switchBtn("menu")}>
           <MdMenu/>
           </label>
 

@@ -10,6 +10,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { AiFillEdit } from "react-icons/ai";
 import {editPost } from "../../features/post/postSlice";
 import { deletePost } from "../../features/user/userSlice";
+import LikeList from "../../component/LikeList";
 import axios from "axios"
 
 
@@ -74,6 +75,8 @@ function ShowPost() {
   });
   // const {user} = useSelector((state)=>state.user)
   const [editForm , setEditForm] = useState(false)
+  const [showLikes , setShowLikes] = useState(false)
+  const [postLikes , setPostLikes] = useState({})
   const [post , setPost] = useState({})
   const { posts } = useSelector((state) => state.post);
   const [loader , setLoader] = useState(true)
@@ -101,6 +104,7 @@ function ShowPost() {
       
       {loader?<Loader/> :  <div className="showPost__wrapper">
             {editForm && <PostEditForm post = {post} setEditForm= {setEditForm}/>}
+        
             
             <img className="sP__postImg" src={post?.media[0]} alt="posts" />
             <div className="sP__postDetail">
@@ -118,7 +122,8 @@ function ShowPost() {
                 </div>}
               </div>
               <div className="sP__Caption">{post?.caption}</div>
-              <PostReaction post={post} setDisplayComment={setDisplayComment} />
+              <PostReaction post={post} setDisplayComment={setDisplayComment}  setPostLikes = {setPostLikes}  setShowLikes = {setShowLikes}  />
+              {showLikes && <LikeList show ={setShowLikes} data = {postLikes}/>}
               <CommentSection
                 displayComment={displayComment}
                 post={post}

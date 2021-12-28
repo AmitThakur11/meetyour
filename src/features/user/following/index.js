@@ -1,10 +1,11 @@
 import FollowCard from "../../../component/FollowCard/index"
 import {useSelector} from "react-redux"
+import "./style.css"
 function Following(props) {
     const {following} = props.user
     return (
         <div>
-            <h1>Folllowing</h1>
+            <h1>Following</h1>
             <div>
                 {
                     following.map((user)=>{

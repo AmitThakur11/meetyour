@@ -25,7 +25,7 @@ function FollowCard(props) {
           className="fc_followBtn"
           onClick={() => dispatch(followUser({ toFollow: props.user._id }))}
         >
-          {label ? <span>Following <TiTick/> </span>: <span> Follow <TiPlus/></span> }
+          {label ? <span>Unfollow  </span>: <span> Follow <TiPlus/></span> }
         </button>
       </div>
     </div>

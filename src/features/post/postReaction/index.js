@@ -8,21 +8,41 @@ import {
 } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { likePost } from "../postSlice";
-import {savePost} from "../../user/userSlice"
-function PostReaction(props) {
-  const { post, setDisplayComment } = props;
-  const { user } = useSelector((state) => state.user);
-  const isLiked = post?.like?.find((like) => like._id === user._id);
- 
-  const isSaved = (savePost)=>{
-    
-    return savePost?.find((saveItem) => saveItem._id === post._id) ? true : false
+import { savePost } from "../../user/userSlice";
 
-  }
-  
+
+
+export default function PostReaction(props) {
+  const { post, setDisplayComment , setPostLikes , setShowLikes  } = props;
+  const { user } = useSelector((state) => state.user);
+
+
+  const isLiked = post.like.find((like) => like._id === user._id);
+  const isSaved = (savePost) => {
+    return savePost?.find((saveItem) => saveItem._id === post._id)
+      ? true
+      : false;
+  };
+
   const dispatch = useDispatch();
   return (
     <section className="postReaction">
+      {post.like.length > 0 ? (
+        <div className="likedBy" onClick={()=>{
+          console.log("click")
+          setShowLikes((show)=>!show)
+          setPostLikes(post.like)
+        }}>
+          {" "}
+          liked by{" "}
+          <span>
+            {post.like[0].username}
+            {post.like.length > 1 && ` and ${post.like.length - 1} other`}
+          </span>
+        </div>
+      ) : (
+        <div className="likedBy">0 likes</div>
+      )}
       <section className="postReaction__wrapper">
         <div className="reaction">
           <label
@@ -31,7 +51,6 @@ function PostReaction(props) {
           >
             {isLiked ? <IoHeartSharp /> : <IoHeartOutline />}
           </label>
-          <div className="count">{post.like.length}</div>
         </div>
         <div
           className="reaction"
@@ -48,18 +67,20 @@ function PostReaction(props) {
         <div className="reaction" onClick={() => dispatch(savePost(post._id))}>
           <label
             style={isLiked && { color: "var(--primary-color)" }}
-            onClick={() =>{
-            console.log("clicked")
-            dispatch(()=>savePost(post._id))}
-            }
+            onClick={() => {
+              dispatch(() => savePost(post._id));
+            }}
           >
-            {/* <IoBookmark /> */}
+
             {isSaved(user.savePost) ? <IoBookmark /> : <IoBookmarkOutline />}
           </label>
         </div>
       </section>
+      
     </section>
   );
 }
 
-export default PostReaction;
+
+
+

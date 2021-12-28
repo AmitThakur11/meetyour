@@ -1,0 +1,15 @@
+.followerPage{
+    margin-top:2rem;
+}
+.followerList{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px
+}
+
+
+@media(max-width : 480px){
+    .followerList{
+        justify-content: center;
+    }
+}

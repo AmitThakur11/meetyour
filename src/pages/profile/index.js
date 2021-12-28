@@ -9,21 +9,22 @@ import UserPost from "../../features/user/userPosts";
 import UserDataPage from "../../features/user/userDataPage";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
-
+import { followUser } from "../../features/user/userSlice";
 import {
   changeProfilePic
 } from "../../features/user/userSlice";
 import Loader from "../../component/loader"
 function Profile() {
-  let [subPage, setSubPage] = useState("post");
+  let [subPage, setSubPage] = useState("Post");
   let [profile , setProfile] = useState([])
   let [loader , setLoader] = useState(false)
-  let { user } = useSelector((state) => state.user);
+  let { user , status } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
 
   
   const isAdmin = user?._id === userId;
+  const label = user?.following?.find(({_id})=>_id === profile._id);
 
   useEffect(()=>{
     (async()=>{
@@ -53,7 +54,7 @@ function Profile() {
         <section className="profileLayout__wrapper">
         <div className="profileHeader__img">
           <div className="pd__img">
-            <img src={profile?.displayPic} alt="/" />
+            {status ==="loading" ? <h1>Just a sec</h1>:<img src={profile?.displayPic} alt="/" />}
             {isAdmin && (
               <label htmlFor="picChange" className="pd__imgEditBtn">
                 <RiCamera3Line />
@@ -78,7 +79,7 @@ function Profile() {
               <span>@</span>
               {profile?.username}
             </div>
-            {!isAdmin && <button>Follow</button>}
+            {!isAdmin && <button onClick={() => dispatch(followUser({ toFollow: profile._id }))}>{label ? "Unfollow" : "Follow"}</button>}
           </div>
           <div className="profileBio">
             <p>{profile?.bio}</p>
@@ -89,46 +90,49 @@ function Profile() {
           
         </div>
       </section>
+      <div className="profileButton__section">
       <div className="profileButton__wrapper">
+
             <ProfileButton
-              name="About"
-              label = "about"
-              onClick={() => setSubPage("about")}
+              label = "About"
+              onClick={() => setSubPage("About")}
               subPage={subPage}
               
             />
             <ProfileButton
-              name={`Post(${profile?.post?.length})`}
-              label= "post"
-              onClick={() => setSubPage("post")}
+            data = {profile.followers}
+              label= "Post"
+              onClick={() => setSubPage("Post")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Followers(${profile?.followers?.length})`}
-              label = "followers"
-              onClick={() => setSubPage("followers")}
+              
+              label = "Followers"
+              onClick={() => setSubPage("Followers")}
               subPage={subPage}
             />
             <ProfileButton
-              name={`Following(${profile?.following?.length})`}
-              label = "following"
-              onClick={() => setSubPage("following")}
+            data = {profile.following}
+
+              label = "Following"
+              onClick={() => setSubPage("Following")}
               subPage={subPage}
             />
             {isAdmin && <ProfileButton
-              name={`Saved(${profile?.savePost?.length})`}
-              label = "saved"
-              onClick={() => setSubPage("saved")}
+            data = {profile.savePost}
+              label = "Saved"
+              onClick={() => setSubPage("Saved")}
               subPage={subPage}
             />}
           </div>
-      <div className="profileData">
+     </div>
+     <div className="profileData">
         <div className="profileData__wrapper">
-          {subPage === "post" && <UserPost post={profile.post} isAdmin={isAdmin}/>}
-          {subPage === "about" && <About user={profile} isAdmin={isAdmin} />}
-          {subPage === "followers" && <UserDataPage user={{data : profile.followers , title  :"Followers"}} isAdmin={isAdmin} />}
-          {subPage === "following" && <UserDataPage user={{data : profile.following , title  :"Following"}} isAdmin={isAdmin} />}
-          {subPage === "saved"  && (
+          {subPage === "Post" && <UserPost post={profile.post} isAdmin={isAdmin}/>}
+          {subPage === "About" && <About user={profile} isAdmin={isAdmin} />}
+          {subPage === "Followers" && <UserDataPage user={{data : profile.followers , title  :"Followers"}} isAdmin={isAdmin} />}
+          {subPage === "Following" && <UserDataPage user={{data : profile.following , title  :"Following"}} isAdmin={isAdmin} />}
+          {subPage === "Saved"  && (
             <UserPost post={profile.savePost} isAdmin={isAdmin}  />
           )}
         </div>

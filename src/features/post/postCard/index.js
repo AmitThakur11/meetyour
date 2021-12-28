@@ -6,7 +6,7 @@ import { likePost } from "../postSlice";
 import PostReaction from "../postReaction";
 import CommentSection from "../commentSection";
 function PostCard(props) {
-  const { post } = props;
+  const { post , setPostLikes , setShowLikes } = props;
   const dispatch = useDispatch();
   const [displayComment, setDisplayComment] = useState({
     inputComment: false,
@@ -32,7 +32,7 @@ function PostCard(props) {
       >
         <img src={post?.media[0]} alt="post" />
       </section>
-      <PostReaction post={post} setDisplayComment={setDisplayComment} />
+      <PostReaction post={post} setDisplayComment={setDisplayComment}  setPostLikes = {setPostLikes}  setShowLikes = {setShowLikes} />
 
       <section className="captionContainer">
         <div className="caption">

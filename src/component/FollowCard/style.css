@@ -5,10 +5,10 @@
     padding: 4px 10px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     width:95%;
-    max-width: 360px;
+    max-width: 300px;
     border-radius: 5px;
     background: white;
-    margin-bottom:6px;
+    margin-bottom:10px;
     display :flex;
     align-items: center;
     flex-wrap: wrap;
@@ -31,6 +31,7 @@
   .fc_two{
     flex:1;
     display:flex;
+    
     justify-content: flex-start;
     margin-left : 10px;
     font-size: 16px;
@@ -55,4 +56,11 @@
   .fc_followBtn >span{
     display: flex;
     align-items: center;
+  }
+
+
+  @media(max-width:480px) {
+    .followCard{
+      /* margin : 6px 0px; */
+    }
   }

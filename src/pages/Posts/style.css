@@ -1,0 +1,25 @@
+.postList__img{
+    width:240px;
+    height: 240px;
+    /* height: auto; */
+    margin:0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: 500ms ease-in-out;
+    
+}
+
+.postList__img:hover{
+    transform: rotate(5deg) scale(1.05);
+}
+
+@media(max-width:480px){
+    .postList{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100;
+    }
+    .postList__img{
+        /* width: 80%; */
+    }
+}
