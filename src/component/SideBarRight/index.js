@@ -9,13 +9,7 @@ import { useNavigate } from 'react-router'
 function SideBarRight({on}) {
     const dispatch = useDispatch();
     const {user,otherUsers} = useSelector(state => state.user);
-    const followingId = user?.following?.map((otherUser)=>otherUser._id);
-    const exploreUsers = otherUsers.map((otherUser)=>{
-        if(!followingId?.includes(otherUser._id)&& otherUser._id !== user._id){
-            return otherUser
-        }
-        return false
-    })
+    // const followingId = user?.following?.map((otherUser)=>otherUser._id);
     const navigate = useNavigate()
     useEffect(() => {
         dispatch(allUsers())
@@ -29,7 +23,7 @@ function SideBarRight({on}) {
             </div>
             
         {
-            exploreUsers.map((others,index)=> others &&<FollowCard user={others}/>)
+            otherUsers.map((others,index)=> index < 3 && others._id !== user._id && <FollowCard key={others._id} user={others}/>)
         }
         <button className ="exploreBtn" onClick = {()=>navigate("/explore")}>See more</button>
         

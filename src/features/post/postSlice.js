@@ -1,28 +1,24 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios'
-
+import {toast} from "react-toastify"
 export const getPosts = createAsyncThunk('post/getPosts',async ()=>{
     const response = await axios.get("post/all");
-    
     return response.data.data
 })
 
 export const addPost = createAsyncThunk("post/add", async(postData)=>{
-    console.log(postData)
     const response = await axios.post("post/addPost",postData);
     return response.data.data
 })
 
 export const likePost = createAsyncThunk("post/like",async(postId)=>{
     const response = await axios.post(`post/like/${postId}`);
-    console.log(response.data.data.like)
     return {response : response.data.data.like , postId : postId }
 })
 
 export const addComment = createAsyncThunk("post/comment",async({postId, commentText})=>{
     console.log(commentText)
     const response = await axios.post(`comment/${postId}/add`,{commentText : commentText});
-    console.log(response.data.data.comment)
     return {response : response.data.data.comment , postId : postId }
 })
 
@@ -33,12 +29,10 @@ export const editPost = createAsyncThunk("post/edit",async({caption,postId})=>{
 })
 
 export const deleteComment = createAsyncThunk("/delete/comment",async(data)=>{
-    const response = await axios.delete(`comment/${data.postId}/delete/${data.commentId}`);
-    console.log(response.data.data);
+    await axios.delete(`comment/${data.postId}/delete/${data.commentId}`);
+    return data
+
 })
-
-
-
 
 
 const initialState = {
@@ -59,17 +53,15 @@ const postSlice = createSlice({
             state.status = 'success'
         },
         [getPosts.rejected] : (state,action)=>{
-            // localStorage.removeItem('auth')
-            // console.log("failed")
             state.status = "failed"
         },
         [addPost.pending]: (state,action)=>{
             state.status ='loading'
         },
         [addPost.fulfilled]:(state,{payload})=>{
-
             state.posts.unshift(payload)
             state.status = "success"
+            toast.success("Post uploaded")
         },
         [addPost.rejected]: (state,action)=>{
             state.status ='error'
@@ -81,13 +73,29 @@ const postSlice = createSlice({
         },
         [addComment.fulfilled] :(state,{payload})=>{
             const findPost = state.posts.findIndex((post)=>post._id === payload.postId);
-            state.posts[findPost].comments.unshift(payload.response)
+            state.posts[findPost].comments.unshift(payload.response);
+            toast.success("Comment added")
+        },
+        [deleteComment.fulfilled]:(state,{payload})=>{
+            const postIndex = state.posts.findIndex((post)=>post._id === payload.postId);
+            const updatedPostComment = state.posts[postIndex].comments.filter(({_id})=>_id !==payload.commentId);
+            state.posts[postIndex].comments = updatedPostComment
+            toast.success("Comment removed")
+
+            
+
+
+        },
+        [editPost.pending]:(state,action)=>{
+            state.status ="loading"
+
         },
         [editPost.fulfilled]:(state,{payload})=>{
             
             const postIndex = state.posts.findIndex((post)=>post._id === payload._id);
-
             state.posts[postIndex].caption = payload.caption
+            state.status ="success"
+            toast.success("Post updated ")
         }
         
 

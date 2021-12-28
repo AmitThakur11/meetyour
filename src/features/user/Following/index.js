@@ -1,5 +1,4 @@
-import FollowCard from "../../../component/FollowCard/index"
-import {useSelector} from "react-redux"
+import {FollowCard} from "../../../component"
 import "./style.css"
 function Following(props) {
     const {following} = props.user

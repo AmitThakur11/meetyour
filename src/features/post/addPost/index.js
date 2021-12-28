@@ -11,15 +11,13 @@ function AddPost() {
   const [preview, setpreview] = useState([]);
   const [postData, setPostData] = useState({caption : "", media : []});
   const {user} = useSelector(state => state.user)
-  const dispatch = useDispatch();
-  console.log(imgData)
+  const dispatch = useDispatch();  
 
-  
   return (
     <section className="addPost__section">
       <section className="addPost__wrapper">
         <div className="userPhoto">
-          <img src={user.displayPic} alt="profilepic" />
+          <img src={user.displayPic} alt={imgData} />
         </div>
         <div className="inputPost__section">
           <textArea placeholder="What's on your mind" onChange ={(e)=>setPostData((postData)=>{

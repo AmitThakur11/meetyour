@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector} from "react-redux"
 import "./style.css"
-import SideMenuBtn from '../sideMenuBtn/index'
+import SideMenuBtn from '../SideMenuBtn/index'
 
 import {RiUserFollowLine , RiImageLine , RiBookmarkLine} from 'react-icons/ri'
 import {Link} from "react-router-dom"

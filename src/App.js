@@ -1,21 +1,11 @@
 import { useEffect } from "react";
 import "./index.css";
-import Header from "./component/header/index";
-import Home from "./pages/home";
-import Profile from "./pages/profile/index";
-import Register from "./pages/register";
-import Login from "./pages/login";
-import Followers from "./pages/Followers";
-import Following from "./pages/Following";
-import ShowPost from "./pages/ShowPost";
+import Header from "./component/Header/index";
 import { Routes, Route } from "react-router-dom";
 import { fetchUser} from "./features/user/userSlice";
 import { getPosts } from "./features/post/postSlice";
-import PageNotFound from "./pages/pageNotFound";
 import PrivateRoute from "./features/user/privateRoute"
-import Posts from "./pages/Posts"
-import Saved from "./pages/Saved"
-import Explore from "./pages/Explore"
+import {Explore , Saved , Posts , PageNotFound , ShowPost ,Home,Profile,Login,Followers ,Following,Register} from "./pages"
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch , useSelector } from "react-redux";
@@ -27,7 +17,7 @@ import axiosInitializer from "./utils/axiosInitializer";
 
 function App() {
   const dispatch = useDispatch();
-  const {login,user} = useSelector((state)=>state.user)
+  const {login} = useSelector((state)=>state.user)
   axiosInitializer()
   useEffect(() => {
     

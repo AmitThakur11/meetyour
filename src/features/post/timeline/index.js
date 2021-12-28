@@ -1,7 +1,7 @@
 import AddPost from "../addPost";
 import PostCard from "../postCard";
 import "./style.css";
-import Loader from "../../../component/loader";
+import Loader from "../../../component/Loader";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import EmptyArea from "../../../component/EmptyArea";
@@ -22,6 +22,7 @@ function Timeline() {
               {posts.map((post) => {
                 return (
                   <PostCard
+                  key ={post._id}
                     post={post}
                     setShowLikes={setShowLikes}
                     setPostLikes={setPostLikes}

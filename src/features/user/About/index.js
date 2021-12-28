@@ -3,7 +3,7 @@ import "./style.css";
 import {useDispatch , useSelector} from 'react-redux'
 import { RiEditLine , RiCloseCircleFill} from "react-icons/ri";
 import {editProfile} from "../userSlice"
-import Loader from "../../../component/loader"
+import Loader from "../../../component/Loader"
 function About(props) {
   const { user, isAdmin } = props;
   const dispatch = useDispatch();

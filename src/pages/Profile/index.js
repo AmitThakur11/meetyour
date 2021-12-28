@@ -3,17 +3,15 @@ import "./style.css";
 import axios from "axios"
 import { RiCamera3Line } from "react-icons/ri";
 import {HiLink} from "react-icons/hi"
-import ProfileButton from "../../features/user/ProfileButton/index";
-import About from "../../features/user/about";
-import UserPost from "../../features/user/userPosts";
-import UserDataPage from "../../features/user/userDataPage";
+import {About,UserPost,ProfileButton} from "../../features/user";
+import UserDataPage from "../../features/user/UserDataPage";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { followUser } from "../../features/user/userSlice";
 import {
   changeProfilePic
 } from "../../features/user/userSlice";
-import Loader from "../../component/loader"
+import Loader from "../../component/Loader"
 function Profile() {
   let [subPage, setSubPage] = useState("Post");
   let [profile , setProfile] = useState([])
@@ -54,7 +52,7 @@ function Profile() {
         <section className="profileLayout__wrapper">
         <div className="profileHeader__img">
           <div className="pd__img">
-            {status ==="loading" ? <h1>Just a sec</h1>:<img src={profile?.displayPic} alt="/" />}
+            {status ==="loading" ? <h1 className ="imageLoad__text">Updating...</h1>:<img src={profile?.displayPic} alt="/" />}
             {isAdmin && (
               <label htmlFor="picChange" className="pd__imgEditBtn">
                 <RiCamera3Line />

@@ -244,11 +244,13 @@
     }
     .profileData__wrapper{
         margin:0;
-        width: 100%;
     }
     .userPostImg{
         width: 6rem;
         height: 6rem;
+    }
+    .imageLoad__text{
+        font-size: 14px;
     }
 }
 

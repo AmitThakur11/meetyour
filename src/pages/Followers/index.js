@@ -1,6 +1,6 @@
 import FollowCard from "../../component/FollowCard";
 import { useSelector } from "react-redux";
-import Loader from "../../component/loader";
+import {Loader} from "../../component";
 import "./style.css"
 export default function Followers() {
   const { user , status } = useSelector((state) => state.user);

@@ -4,7 +4,7 @@ import { useSelector , useDispatch } from "react-redux";
 import PostReaction from "../../features/post/postReaction";
 import CommentSection from "../../features/post/commentSection";
 import { useParams , useNavigate} from "react-router-dom";
-import Loader from "../../component/loader";
+import Loader from "../../component/Loader";
 import { IoMdTrash } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { AiFillEdit } from "react-icons/ai";

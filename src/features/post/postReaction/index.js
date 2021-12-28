@@ -10,12 +10,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { likePost } from "../postSlice";
 import { savePost } from "../../user/userSlice";
 
-
-
 export default function PostReaction(props) {
-  const { post, setDisplayComment , setPostLikes , setShowLikes  } = props;
+  const { post, setDisplayComment, setPostLikes, setShowLikes } = props;
   const { user } = useSelector((state) => state.user);
-
 
   const isLiked = post.like.find((like) => like._id === user._id);
   const isSaved = (savePost) => {
@@ -28,11 +25,13 @@ export default function PostReaction(props) {
   return (
     <section className="postReaction">
       {post.like.length > 0 ? (
-        <div className="likedBy" onClick={()=>{
-          console.log("click")
-          setShowLikes((show)=>!show)
-          setPostLikes(post.like)
-        }}>
+        <div
+          className="likedBy"
+          onClick={() => {
+            setShowLikes((show) => !show);
+            setPostLikes(post.like);
+          }}
+        >
           {" "}
           liked by{" "}
           <span>
@@ -71,16 +70,10 @@ export default function PostReaction(props) {
               dispatch(() => savePost(post._id));
             }}
           >
-
             {isSaved(user.savePost) ? <IoBookmark /> : <IoBookmarkOutline />}
           </label>
         </div>
       </section>
-      
     </section>
   );
 }
-
-
-
-

@@ -11,20 +11,16 @@ const initialState = {
 
 export const register = createAsyncThunk("/user/register", async (userData) => {
   const response = await axios.post("/auth/register", userData);
-  console.log(response.data.data.token);
   return response.data.data;
 });
 
 export const login = createAsyncThunk("user/login", async (userData) => {
   const response = await axios.post("/auth/login", userData);
-  console.log(response.data.data.token);
   return response.data.data;
 });
 
 export const fetchUser = createAsyncThunk("/user/detail", async () => {
   const response = await axios.get("/user/userProfile");
-
-  console.log("fetchuser");
   return response.data.data;
 });
 
@@ -51,7 +47,6 @@ export const followUser = createAsyncThunk(
 
 export const savePost = createAsyncThunk("user/savePost", async (postId) => {
   const response = await axios.post(`/post/save/${postId}`);
-  console.log(response.data);
   return response.data.data;
 });
 
@@ -65,18 +60,14 @@ export const deletePost = createAsyncThunk("post/delete", async (postId) => {
   return { data: response.data.data, postId: postId };
 });
 
-// export const seeProfile = createAsyncThunk("user/profile",async({userId})=>{
-//     const response = await axios.get(`user/profile/${userId}`)
-//     return response.data.data
-// })
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     logout: (state, action) => {
-      console.log(JSON.parse(localStorage?.getItem("auth"))?.login);
       localStorage.removeItem("auth");
-      state.login = false;
+      return initialState
+      
     },
   },
   extraReducers: {
@@ -108,7 +99,6 @@ const userSlice = createSlice({
       state.status = "success";
     },
     [login.rejected]: (state, { error }) => {
-      console.log(error.message);
       state.status = "failed";
       toast.error("user not found");
     },
@@ -149,7 +139,6 @@ const userSlice = createSlice({
       state.otherUsers = payload;
     },
     [allUsers.rejected]: (state, payload) => {
-      // localStorage.removeItem("auth")
       state.status = "failed";
     },
     [savePost.fulfilled]: (state, { payload }) => {

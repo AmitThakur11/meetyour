@@ -7,8 +7,7 @@ function FollowCard(props) {
 
   const dispatch = useDispatch();
   const {user} = useSelector((state)=>state.user)
-  const label = user?.following?.find(({_id})=>_id === props.user._id);
-  console.log(label)
+  const label = user?.following?.find(({_id})=>_id === props.user._id)
   return (
       <>
       

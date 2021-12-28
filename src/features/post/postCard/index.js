@@ -14,7 +14,7 @@ function PostCard(props) {
   });
 
   return (
-    <div key={post?._id} className="postCard">
+    <div key={post._id} className="postCard">
       <section className="postHeader">
         <div className="userDetail">
           <img src={post?.author?.displayPic} alt="userimg" />

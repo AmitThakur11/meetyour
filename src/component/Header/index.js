@@ -19,7 +19,6 @@ function Header() {
         dispatch(logout())
         setUserOption(false);
     }
-    console.log(searchData)
 
     return (
         <nav  className ="header">

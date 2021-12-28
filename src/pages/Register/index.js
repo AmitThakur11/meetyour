@@ -1,5 +1,5 @@
 import './style.css';
-import FormInput from '../../component/formInput/index';
+import FormInput from '../../component/FormInput/index';
 import RegisterImg from  "../../media/register.png";
 import {Link} from 'react-router-dom'
 // import {getUser} from "../../features/user/userSlice"
@@ -7,7 +7,7 @@ import {register} from "../../features/user/userSlice"
 import {useState} from 'react'
 import { useNavigate } from 'react-router';
 import {useDispatch} from "react-redux"
-function Register() {
+export default function Register() {
   document.title ='Register';
   const [userInput , setUserInput] = useState({
     username : "",
@@ -110,4 +110,3 @@ function Register() {
   );
 }
 
-export default Register;

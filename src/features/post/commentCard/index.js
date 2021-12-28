@@ -6,14 +6,16 @@ import TimeAgo from "../timeAgo";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoMdTrash } from "react-icons/io";
 import { AiFillEdit } from "react-icons/ai";
-import {deleteComment} from "../postSlice"
+import { deleteComment } from "../postSlice";
 
+export function EditPostButton({ setEditForm, comment, ...props }) {
+  const [edit, setEdit] = useState(false);
 
-export function EditPostButton({ setEditForm,comment , ...props }) {
-  // const {user} = useSelector(state => state.user)
-  const [edit , setEdit] = useState(false);
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const removeComment = () => {
+    setEdit(false);
+    dispatch(deleteComment({ postId: comment.post, commentId: comment._id }));
+  };
   return (
     <section className="editPost__section">
       <label onClick={() => setEdit(!edit)}>
@@ -22,19 +24,15 @@ export function EditPostButton({ setEditForm,comment , ...props }) {
 
       {edit && (
         <div className="editPost__modal">
-          <label onClick={async()=>{
-            
-
-            setEdit(false)
-            await dispatch(deleteComment({postId :comment.post, commentId : comment._id}))
-            
-          }}>
+          <label onClick={() => removeComment()}>
             <IoMdTrash /> Delete
           </label>
-          <label onClick={()=>{
-            setEdit(false)
-            setEditForm(true)
-          }}>
+          <label
+            onClick={() => {
+              setEdit(false);
+              setEditForm(true);
+            }}
+          >
             <AiFillEdit /> Edit
           </label>
         </div>
@@ -46,10 +44,12 @@ function CommentCard(props) {
   const { user } = useSelector((state) => state.user);
   const { input, comment, post, style } = props;
   const [commentText, setCommentText] = useState("");
-  // const [edit , setEdit] = useState(false)
-  const [editForm ,setEditForm] = useState(false)
-  console.log(editForm)
+  const [editForm, setEditForm] = useState(false);
   const dispatch = useDispatch();
+  const addNewComment = () => {
+    dispatch(addComment({ postId: post._id, commentText: commentText }));
+    setCommentText("");
+  };
   return (
     <section className="commentWrapper" style={style}>
       <div>
@@ -85,25 +85,18 @@ function CommentCard(props) {
       </section>
       {input && (
         <section>
-          <button
-            className="commentBtn"
-            onClick={() => {
-              dispatch(
-                addComment({ postId: post._id, commentText: commentText })
-              );
-              setCommentText("");
-            }}
-          >
+          <button className="commentBtn" onClick={() => addNewComment()}>
             ADD
           </button>
-          
-        
-        
-          
         </section>
-        
       )}
-      {!input && (comment.author._id === user._id) && <EditPostButton setEditForm={setEditForm} comment ={comment}/>}
+      {!input && comment.author._id === user._id && (
+        <EditPostButton
+          setEditForm={setEditForm}
+          comment={comment}
+          editForm={editForm}
+        />
+      )}
     </section>
   );
 }

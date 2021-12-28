@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./style.css"
-import Loader from "../../component/loader";
+import Loader from "../../component/Loader";
 export default function Saved() {
     const {user,status} = useSelector((state)=>state.user)
 
