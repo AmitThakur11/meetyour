@@ -1,14 +1,9 @@
 .timeline{
     padding-top: -20px;
-    /* flex:1; */
     width:50%;
-
     position: relative;
     justify-content: center;
     min-height: calc( 100vh - 80px );
-    
-    /* height: 100000px; */
-    /* overflow-y: scroll; */
 
 
 }
