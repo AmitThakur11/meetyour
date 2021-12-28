@@ -13,12 +13,11 @@ function Header() {
 
     const [searchText , setSearchText] =useState("")
     const [userOption, setUserOption] =useState(false)
-    const {user ,otherUsers} = useSelector((state)=>state.user)
+    const {user ,otherUsers , login} = useSelector((state)=>state.user)
     const searchData = otherUsers.filter((data)=> data.username.match(searchText.toLocaleLowerCase()))
     const logoutHandler =()=>{
         dispatch(logout())
         setUserOption(false);
-        // navigate("/login")
     }
     console.log(searchData)
 
@@ -31,7 +30,7 @@ function Header() {
             </section>
             </Link>
             <section className ="subHeader">
-            <div className ="searchBar">
+            {login ? <><div className ="searchBar">
                 
                 <input value={searchText} placeholder = "Search..." onChange ={(e)=>setSearchText(e.target.value)}/>
                 {searchText.length > 0 && <div className ="searchResult">{
@@ -59,9 +58,6 @@ function Header() {
             </div>
             <section className ="headerOption">
                 
-            {/* <Link to ="/register" ><button className="logBtn">Log out</button></Link> */}
-                
-                
                 <div className ="userMenu">
                 <span onClick={()=>{
                     setUserOption((menu)=>!menu
@@ -85,6 +81,10 @@ function Header() {
 
                 
             </section>
+            </>:<div className ="subHeader__btn">
+                <Link to ="/login">Login</Link>
+                <Link to = "/register">Sign up</Link>
+                </div>}
             </section>
 
         </nav>
