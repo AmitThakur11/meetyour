@@ -27,7 +27,7 @@ import axiosInitializer from "./utils/axiosInitializer";
 
 function App() {
   const dispatch = useDispatch();
-  const {login} = useSelector((state)=>state.user)
+  const {login,user} = useSelector((state)=>state.user)
   axiosInitializer()
   useEffect(() => {
     

@@ -46,4 +46,7 @@ right: 0;
 }
 
 @media(max-width :480px){
+  .likeList__section{
+    width: 100%;
+  }
 }
