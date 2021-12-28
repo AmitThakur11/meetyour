@@ -14,6 +14,7 @@ function SideBarRight({on}) {
         if(!followingId?.includes(otherUser._id)&& otherUser._id !== user._id){
             return otherUser
         }
+        return false
     })
     const navigate = useNavigate()
     useEffect(() => {

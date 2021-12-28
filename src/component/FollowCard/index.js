@@ -2,7 +2,7 @@ import "./style.css";
 import { useDispatch , useSelector } from "react-redux";
 import { followUser } from "../../features/user/userSlice";
 import {Link}from "react-router-dom";
-import { TiTick , TiPlus } from "react-icons/ti";
+import { TiPlus } from "react-icons/ti";
 function FollowCard(props) {
 
   const dispatch = useDispatch();

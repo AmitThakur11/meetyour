@@ -1,5 +1,5 @@
 import "./style.css"
-import {useEffect,useState} from "react"
+import {useEffect} from "react"
 import {useSelector , useDispatch} from "react-redux"
 import {Link} from "react-router-dom"
 import Loader from "../../component/loader"
@@ -25,7 +25,7 @@ export default function Explore(){
         (async()=>{
             await dispatch(allUsers())
         })()
-    },[])
+    },[dispatch])
     return(
         <div className ="explorePage">
             {status === "loading" && <Loader/>}

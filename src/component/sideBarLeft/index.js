@@ -2,10 +2,8 @@ import React from 'react'
 import {useSelector} from "react-redux"
 import "./style.css"
 import SideMenuBtn from '../sideMenuBtn/index'
-import {MdOutlineQuiz} from 'react-icons/md'
-import {AiOutlineShopping} from 'react-icons/ai'
-import {BiCameraMovie} from 'react-icons/bi'
-import {RiHome5Line ,RiUserFollowLine , RiImageLine , RiBookmarkLine} from 'react-icons/ri'
+
+import {RiUserFollowLine , RiImageLine , RiBookmarkLine} from 'react-icons/ri'
 import {Link} from "react-router-dom"
 function SideBarLeft({on}) {
     let {user} =  useSelector((state)=>state.user);
