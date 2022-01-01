@@ -1,5 +1,43 @@
 .pd__postContainer{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* justify-content: center; */
+    place-content: center;
     flex-wrap: wrap;
+    padding: auto;
+}
+
+.userPostImg{
+    width: 10rem;
+    height: 10rem;
+    margin :0px 2px;
+    transition: 300ms ease-in-out;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    background :white;
+}
+@media(max-width:820px){
+    .pd__postContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr  1fr 1fr;
+       
+    }
+    .userPostImg{
+        width: 7rem;
+        height: 7rem;
+    }
+    
+}
+
+
+
+@media(max-width:480px){
+    .pd__postContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .userPostImg{
+        width: 6rem;
+        height: 6rem;
+    }
+    
 }

@@ -1,4 +1,4 @@
-.profileButton button {
+.profileButton > button {
     background: black;
     color:white;
     padding :6px 10px;
@@ -23,8 +23,16 @@
 
 }
 
+
+@media(max-width:780px){
+    .profileButton > button{
+        font-size: 20px;
+    }
+
+}
+
 @media(max-width:480px){
-    .profileButton button{
+    .profileButton >  button{
         background: black;
         color:rgb(255, 255, 255);
         padding :4px;

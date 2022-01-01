@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin: 0px  auto;
+    margin: 20px  auto;
     position: relative;
     
 }
@@ -31,7 +31,7 @@
     width :200px;
     height: 200px;
     border-radius: 50%;
-    border:2px solid black;
+    border :2px solid var(--primary-color);
     background: white;
     display: flex;
     justify-content: center;
@@ -40,6 +40,7 @@
 .pd__img >img{
     width :200px;
     height: 200px;
+    border :2px solid var(--primary-color);
     
     border-radius: 50%;
     
@@ -96,9 +97,9 @@
     background: white;
 }
 .profileButton__section{
-    width :100%;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    display: grid;
+    place-content: center;
 }
 .profileButton__wrapper{
     display: flex;
@@ -139,21 +140,18 @@
 }
 
 
-.profileData__wrapper{
+/* .profileData__wrapper{
     width: 90%;
-    /* margin-left: 8em; */
-}
+    
+} */
 .pd__postContainer{
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    place-content: center;
+    flex-wrap: wrap;
+    padding: auto;
 }
-.userPostImg{
-    width: 200px;
-    height: 200px;
-    margin :0px 2px;
-    transition: 300ms ease-in-out;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-    background :white;
-}
+
 
 .pd__postContainer >img:hover{
     width: 25%;
@@ -181,17 +179,15 @@
         
     }
     .pd__img{
-        width :80px;
-        height: 80px;
-        border-radius: 50%;
-        border:2px solid black;
+        width :140px;
+        height: 140px;
         
     }
     .pd__img >img{
 
-        width :80px;
-        height: 80px;
-        border-radius: 50%;
+        width :140px;
+        height: 140px;
+
 
     }
     .pd__Name{
@@ -245,12 +241,31 @@
     .profileData__wrapper{
         margin:0;
     }
-    .userPostImg{
-        width: 6rem;
-        height: 6rem;
-    }
+   
     .imageLoad__text{
         font-size: 14px;
     }
 }
 
+
+@media(max-width:480px){
+    .pd__Name{
+        font-size: 16px;
+    }
+    .profileLayout{
+        max-width: 0px auto;
+    }
+    .pd__img{
+        width :100px;
+        height: 100px;
+        
+        
+    }
+    .pd__img >img{
+
+        width :100px;
+        height: 100px;
+       
+
+    }
+}
