@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+# MeetYour
 
-In the project directory, you can run:
+A social media app developed using MERN stack with redux toolkit and user authentication  using JWT.
+## Features
 
-### `yarn start`
+- User can make posts.
+- User can like the  posts.
+- User can comment on the posts.
+- User can bookmark posts.
+- User can follow/unfollow other users.
+- User can check other profiles.
+- User can edit there profile.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `yarn build`
+### Desktop view
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Home page
+![desktop home page](https://i.ibb.co/Ms6Hb9Z/Screenshot-from-2022-01-01-18-18-03.png)
+#### Post page
+![desktop home page](https://i.ibb.co/Fq5DLwL/Screenshot-from-2022-01-01-18-17-53.png)
+#### Profile page
+![desktop home page](https://i.ibb.co/tXQ9gFz/Screenshot-from-2022-01-01-18-18-12.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Mobile view
 
-### `yarn eject`
+#### Home page
+![desktop home page](https://i.ibb.co/qsB1qCM/Screenshot-from-2022-01-01-18-17-27.png)
+#### Post page
+![desktop home page](https://i.ibb.co/gTVx2Qn/Screenshot-from-2022-01-01-18-17-44.png)
+#### Profile page
+![desktop home page](https://i.ibb.co/SfCM1CK/Screenshot-from-2022-01-01-18-17-09.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
