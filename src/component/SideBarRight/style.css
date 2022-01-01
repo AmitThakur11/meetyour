@@ -56,22 +56,13 @@
 }
 @media(max-width:780px){
   .rightSideBar{
-    background: white;
-    border-radius: 6px;
-
     height: 480px;
-    position: sticky;
     top:110px;
     display: none;
 }
 .bar-two{
-  overflow-y: auto;
+
   display: flex;
-  width: 22%;
-  flex-direction: column;
-  place-items: center;
-  padding: 10px;
-  /* display: none; */
   position: fixed;
   height: calc( 100vh - 60px );
   right: 0;
@@ -88,10 +79,6 @@
 
 @media(max-width:480px){
   .rightSideBar{
-    background: white;
-    border-radius: 6px;
-
-    height: 480px;
     position: sticky;
     top:120px;
     display: none;
@@ -99,7 +86,6 @@
 
 .rightSideBar::-webkit-scrollbar {
     width: 6px;
-    /* background: black; */
     
   }
 
@@ -118,13 +104,8 @@
   }
    
 .bar-two{
-  overflow-y: auto;
+ 
   display: flex;
-  width: 22%;
-  flex-direction: column;
-  place-items: center;
-  padding: 10px;
-  /* display: none; */
   position: fixed;
   height: calc( 100vh - 60px );
   right: 0;
