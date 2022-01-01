@@ -10,6 +10,8 @@
 }
 .likedBy{
     font-style: italic;
+    font-size: 12px;
+    padding-left: 10px;
 }
 .likedBy > span{
     color : var(--primary-color)

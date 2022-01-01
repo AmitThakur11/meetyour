@@ -15,7 +15,7 @@
 }
 
 .sP__postImg{
-    max-width:50%;
+    width:50%;
     max-height: 60vh;
     height: auto;
 }
@@ -137,9 +137,10 @@ justify-content: flex-end;}
     .showPost__wrapper{
         flex-direction: column;
         width: 90%;
+        margin-top: 10px;
     }
     .sP__postImg{
-        max-width: 100%;
+        width: 100%;
         height: auto;
         max-height: 360px;
     }
