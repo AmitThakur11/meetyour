@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import CommentCard from "../commentCard";
-
+import "./style.css"
 function CommentSection(props) {
   const { displayComment, post, setDisplayComment } = props;
   const moreComment = () =>
@@ -15,7 +15,7 @@ function CommentSection(props) {
   return (
     <>
       <div
-        style={{ color: "grey", fontStyle: "italic", margin: "5px" }}
+        className ="showComments"
         onClick={() => setDisplayComment((comment)=>{
             return {...comment, commentQty : 1 , inputComment :!comment.inputComment}
         })}
@@ -40,7 +40,7 @@ function CommentSection(props) {
               </section>
             );
           })}
-          <div style={{ margin: "5px" }} >
+          <div  className="showComments"  >
             
                {post.comments.length > displayComment.commentQty && displayComment.commentQty > 0 && <div onClick={() => moreComment()}>show more</div>}
        

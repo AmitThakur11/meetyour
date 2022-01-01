@@ -87,16 +87,13 @@
 
 .captionContainer{
     width: 100%;
-    /* padding:2px; */
-    /* font-weight: 700; */
-    margin: 5px 0px;
-    /* border :1px solid black; */
+
 }
 
 .caption{
     font-size: 16px;
     min-height: 40px;
-    background-color: rgb(236, 220, 245);
+    background: rgb(240, 239, 239);
     /* border-radius:5px; */
     padding:10px;
 
@@ -179,10 +176,9 @@
     
     .captionContainer{
         width: 100%;
-        padding:5px 10px;
-        font-weight: 700;
-        margin: 5px 0px;
-        /* border :1px solid black; */
+        
+    
+       
     }
     
     .caption{
