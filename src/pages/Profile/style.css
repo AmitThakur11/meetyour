@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin: 20px  auto;
+    margin: 20px auto 0px auto;
     position: relative;
     
 }

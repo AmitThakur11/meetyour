@@ -5,7 +5,7 @@ function Following(props) {
     return (
         <div>
             <h1>Following</h1>
-            <div>
+            <div >
                 {
                     following.map((user)=>{
                         return <FollowCard user ={user}/>
