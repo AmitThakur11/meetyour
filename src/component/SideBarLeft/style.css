@@ -42,7 +42,7 @@
     background-color: rgb(221, 220, 220);
     cursor: pointer;
     border-radius: 50%;
-    border:2px solid var(--red);
+    border:2px solid black;
     /* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; */
 
 

@@ -17,7 +17,7 @@ export const likePost = createAsyncThunk("post/like",async(postId)=>{
 })
 
 export const addComment = createAsyncThunk("post/comment",async({postId, commentText})=>{
-    console.log(commentText)
+
     const response = await axios.post(`comment/${postId}/add`,{commentText : commentText});
     return {response : response.data.data.comment , postId : postId }
 })
@@ -54,6 +54,7 @@ const postSlice = createSlice({
         },
         [getPosts.rejected] : (state,action)=>{
             state.status = "failed"
+            toast.error("Something went wrong")
         },
         [addPost.pending]: (state,action)=>{
             state.status ='loading'
@@ -64,6 +65,7 @@ const postSlice = createSlice({
             toast.success("Post uploaded")
         },
         [addPost.rejected]: (state,action)=>{
+            toast.error("Upload failed")
             state.status ='error'
         },
         [likePost.fulfilled] : (state,{payload})=>{
