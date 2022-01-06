@@ -6,7 +6,7 @@ import  Store  from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from "react-router-dom";
-import ScrollToTop from "./scrollToTop"
+import ScrollToTop from "./utils/scrollToTop"
 ReactDOM.render(
   
   <React.StrictMode>
