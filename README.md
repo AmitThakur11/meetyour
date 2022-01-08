@@ -13,7 +13,8 @@ A social media app developed using MERN stack with redux toolkit and user authen
 - User can edit there profile.
 
 
-
+## Backend
+[https://github.com/AmitThakur11/meetyour_backend](https://github.com/AmitThakur11/meetyour_backend)
 
 ## Screenshots
 
