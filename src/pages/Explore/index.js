@@ -42,13 +42,7 @@ export default function Explore() {
       {status === "success" && (
         <div className="exploreList">
           {otherUsers.map((data) => {
-            return (
-              user._id !== data._id && (
-                <div className="exploreCard__wrapper">
-                  <ExploreCard data={data} />
-                </div>
-              )
-            );
+            return user._id !== data._id && <ExploreCard data={data} />;
           })}
         </div>
       )}

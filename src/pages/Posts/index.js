@@ -11,6 +11,7 @@ export default function Posts() {
       {status === "success" && (
         <div className="postSection">
           <section className="pageTitle">Posts({user.post.length})</section>
+          {user.post.length === 0 && <h1>No post</h1>}
           <secton className="postList">
             {user.post.map((postImage) => {
               return (

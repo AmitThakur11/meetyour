@@ -20,6 +20,9 @@
     margin-bottom: 2rem;
     
 }
+.profileData__wrapper{
+    width: 90%;
+}
 .profileHeader__img{
     display: flex;
     flex-direction: column;

@@ -66,7 +66,9 @@ const userSlice = createSlice({
   reducers: {
     logout: (state, action) => {
       localStorage.removeItem("auth");
-      state.login = "false"
+      state.login =false
+      state.user = {};
+      state.otherUsers =[]
 
       
     },
@@ -87,7 +89,7 @@ const userSlice = createSlice({
     [register.rejected]: (state, action) => {
       state.status = "failed";
     },
-    [login.pending]: (state, { payload }) => {
+    [login.pending]: (state,action) => {
       state.status = "loading";
     },
     [login.fulfilled]: (state, { payload }) => {

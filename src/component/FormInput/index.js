@@ -5,15 +5,14 @@ function FormInput({ input, onChange }) {
   const focusOn = (e) => setFocused(true);
   return (
     <div className="formInput">
-      {/* <label>{input.label}</label> */}
+    
       <input
-      className="formInput__item"
+        className="formInput__item"
         onChange={(e) => onChange(e)}
         {...input}
         onBlur={focusOn}
-        onFocus ={()=>input.name === "cpassword" && setFocused(true)}
+        onFocus={() => input.name === "cpassword" && setFocused(true)}
         focused={focused.toString()}
-
       />
       <span className="errorMsg">{input.errorMsg}</span>
     </div>

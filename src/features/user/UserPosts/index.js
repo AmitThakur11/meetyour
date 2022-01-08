@@ -2,10 +2,11 @@
 import {Link} from "react-router-dom"
 import "./style.css"
 function UserPost(props) {
-    const {post} =props
+    const {post} = props
     
     return (
                     <div className ="pd__postContainer">
+                        {post?.length  === 0&& <h1>No post</h1>}
                     
                         {
                             post?.map((postImage)=>{

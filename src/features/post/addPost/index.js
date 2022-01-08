@@ -20,9 +20,9 @@ function AddPost() {
           <img src={user.displayPic} alt={imgData} />
         </div>
         <div className="inputPost__section">
-          <textArea placeholder="What's on your mind" onChange ={(e)=>setPostData((postData)=>{
+          <textarea placeholder="What's on your mind" onChange ={(e)=>setPostData((postData)=>{
             return {...postData , caption : e.target.value}
-          })}></textArea>
+          })}></textarea>
           <div className="imagePreview">
             {preview.length > 0 &&
               preview.map((img) => {
