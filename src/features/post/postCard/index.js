@@ -17,8 +17,8 @@ function PostCard(props) {
     <div key={post._id} className="postCard">
       <section className="postHeader">
         <div className="userDetail">
-          <img src={post?.author?.displayPic} alt="userimg" />
-          <div>{post?.author?.username}</div>
+          <img src={post.author.displayPic} alt="userimg" loading="lazy" />
+          <div>{post.author.username}</div>
           <div className ="postTime">
             <TimeAgo
             timestamp={post.createdAt}
@@ -30,7 +30,7 @@ function PostCard(props) {
         className="postMedia"
         onDoubleClick={() => dispatch(likePost(post._id))}
       >
-        <img src={post?.media[0]} alt="post" />
+        <img src={post.media[0]} alt="post" loading="lazy" />
       </section>
       <PostReaction post={post} setDisplayComment={setDisplayComment}  setPostLikes = {setPostLikes}  setShowLikes = {setShowLikes} />
 

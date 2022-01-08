@@ -7,6 +7,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoMdTrash } from "react-icons/io";
 import { AiFillEdit } from "react-icons/ai";
 import { deleteComment } from "../postSlice";
+import { toast } from "react-toastify";
 
 export function EditPostButton({ setEditForm, comment, ...props }) {
   const [edit, setEdit] = useState(false);
@@ -47,6 +48,9 @@ function CommentCard(props) {
   const [editForm, setEditForm] = useState(false);
   const dispatch = useDispatch();
   const addNewComment = () => {
+    if(commentText === ""){
+      return toast.info("First write something")
+    }
     dispatch(addComment({ postId: post._id, commentText: commentText }));
     setCommentText("");
   };

@@ -48,7 +48,6 @@ function AddPost() {
                 setImgData(e.target.files);
                 previewImg(e.target.files,setpreview);
               }}
-              multiple
               accept="image/*"
             />
 
