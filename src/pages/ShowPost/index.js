@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PostReaction from "../../features/post/postReaction";
 import CommentSection from "../../features/post/commentSection";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate ,Link} from "react-router-dom";
 import Loader from "../../component/Loader";
 import { IoMdTrash } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
@@ -117,7 +117,7 @@ function ShowPost() {
                 src={post?.author.displayPic}
                 alt="user"
               />
-              <p className="sP__username">@{post?.author.username}</p>
+              <p className="sP__username"><Link to={`/profile/${post.author._id}`}>@{post?.author.username}</Link></p>
               {isAdmin && (
                 <div className="postEdit__wrapper">
                   <EditPostButton setEditForm={setEditForm} post={post} />

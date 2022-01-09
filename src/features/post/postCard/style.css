@@ -35,6 +35,9 @@
     max-height: 600px;
     
 }
+.postHeader >a{
+    width: 100%;
+}
 
 .userDetail{
     display: flex;

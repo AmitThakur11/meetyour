@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TimeAgo from "../timeAgo";
 import { useDispatch } from "react-redux";
 import { likePost } from "../postSlice";
+import {Link} from "react-router-dom";
 import PostReaction from "../postReaction";
 import CommentSection from "../commentSection";
 function PostCard(props) {
@@ -16,6 +17,7 @@ function PostCard(props) {
   return (
     <div key={post._id} className="postCard">
       <section className="postHeader">
+        <Link to={`/profile/${post.author._id}`}>
         <div className="userDetail">
           <img src={post.author.displayPic} alt="userimg" loading="lazy" />
           <div>{post.author.username}</div>
@@ -24,7 +26,9 @@ function PostCard(props) {
             timestamp={post.createdAt}
           />
           </div>
+          
         </div>
+        </Link>
       </section>
       <section
         className="postMedia"
