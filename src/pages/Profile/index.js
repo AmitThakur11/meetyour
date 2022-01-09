@@ -88,9 +88,10 @@ function Profile() {
                 )}
               </div>
               <div className="profileBio">
-                <a href={profile.bio}>
+                <div>{profile.bio}</div>
+                <a href={profile.website}>
                   <HiLink />
-                  <span>{profile.bio}</span>
+                  <span>{profile.website}</span>
                 </a>
               </div>
             </div>

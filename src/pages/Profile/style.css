@@ -123,9 +123,14 @@
 
 .profileBio{
     width:600px;
-    min-height: 100px;
+    min-height: 80px;
     background-color: white;
+    color : var(--primary-color);
     padding:4px 8px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 6px;
     line-height: 28px;
 }
@@ -133,10 +138,11 @@
 .profileBio > p{
     font-size :24px;
 }
+
 .profileBio > a{
     text-decoration: none;
-    font-size: 18px;
-    color : var(--primary-color);
+    color:grey;
+    font-size: 14px;
     display: inline-flex;
     font-weight: 700;
 
