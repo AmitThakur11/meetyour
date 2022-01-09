@@ -40,7 +40,7 @@ export default function PostReaction(props) {
           </span>
         </div>
       ) : (
-        <div className="likedBy">0 likes</div>
+        <div className="likedBy">No like</div>
       )}
       <section className="postReaction__wrapper">
         <div className="reaction">

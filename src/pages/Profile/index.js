@@ -21,6 +21,14 @@ function Profile() {
   const isAdmin = user?._id === userId;
   const label = user?.following?.find(({ _id }) => _id === profile._id);
 
+  const getProfilePic = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onloadend = () => {
+      dispatch(changeProfilePic(reader.result));
+    };
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -59,13 +67,7 @@ function Profile() {
                 <input
                   id="picChange"
                   type="file"
-                  onChange={(e) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(e.target.files[0]);
-                    reader.onloadend = () => {
-                      dispatch(changeProfilePic(reader.result));
-                    };
-                  }}
+                  onChange={(e) => getProfilePic(e)}
                 />
               </div>
             </div>
@@ -86,9 +88,9 @@ function Profile() {
                 )}
               </div>
               <div className="profileBio">
-                <a href={profile?.website}>
+                <a href={profile.bio}>
                   <HiLink />
-                  <span>{profile?.website}</span>
+                  <span>{profile.bio}</span>
                 </a>
               </div>
             </div>

@@ -69,7 +69,7 @@
     outline : none;
 }
 .inputPost__section >textarea::placeholder{
-    color:black;
+    color:rgb(87, 87, 87)
 }
 #imageInput{
     display: none;

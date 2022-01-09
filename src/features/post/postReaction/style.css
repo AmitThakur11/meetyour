@@ -9,9 +9,13 @@
     
 }
 .likedBy{
-    font-style: italic;
+    background-color: rgb(227, 227, 227);
+    padding:4px 7px;
+    margin-left: 4px;
     font-size: 16px;
     padding-left: 10px;
+    border-radius: 4px;
+    border : 1px solid rgb(205, 205, 205)
 }
 .likedBy > span{
     color : var(--primary-color)
