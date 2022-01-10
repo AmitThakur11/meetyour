@@ -165,10 +165,10 @@ const userSlice = createSlice({
     [deletePost.fulfilled]: (state, { payload }) => {
       const { postId } = payload;
       const updateUserPosts = state.user.post.filter(
-        (post) => post._id === postId
+        (post) => post._id !== postId
       );
       const updateUsersavePosts = state.user.savePost.filter(
-        (post) => post._id === postId
+        (post) => post._id !== postId
       );
 
       toast.success("Post removed");

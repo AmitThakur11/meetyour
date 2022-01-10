@@ -78,7 +78,7 @@ function ShowPost() {
     inputComment: true,
     commentQty: 1,
   });
-  // const {user} = useSelector((state)=>state.user)
+  const {user} = useSelector((state)=>state.user)
   const [editForm, setEditForm] = useState(false);
   const [showLikes, setShowLikes] = useState(false);
   const [postLikes, setPostLikes] = useState({});
@@ -86,15 +86,13 @@ function ShowPost() {
   const { posts } = useSelector((state) => state.post);
   const [loader, setLoader] = useState(true);
   const { postId } = useParams();
-
-  const isAdmin = true;
+  const isAdmin = (id1,id2)=>id1===id2
   useEffect(() => {
     (async () => {
       try {
         setLoader(true);
         const response = await axios.get(`/post/${postId}`);
         setPost(response.data.data);
-
         setLoader(false);
       } catch (err) {
         setLoader(false);
@@ -118,7 +116,7 @@ function ShowPost() {
                 alt="user"
               />
               <p className="sP__username"><Link to={`/profile/${post.author._id}`}>@{post?.author.username}</Link></p>
-              {isAdmin && (
+              { isAdmin(post.author._id,user._id) && (
                 <div className="postEdit__wrapper">
                   <EditPostButton setEditForm={setEditForm} post={post} />
                 </div>
