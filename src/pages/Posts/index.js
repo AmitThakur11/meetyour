@@ -12,21 +12,22 @@ export default function Posts() {
         <div className="postSection">
           <section className="pageTitle">Posts({user.post.length})</section>
           {user.post.length === 0 && <h1>No post</h1>}
-          <secton className="postList">
+          <section className="postList">
             {user.post.map((postImage) => {
               return (
                 <>
-                  <Link to={`/post/${postImage._id}`}>
+                  <Link to={`/post/${postImage._id}`} key={postImage._id}>
                     <img
                       className="postList__img"
                       src={postImage.media[0]}
                       alt="media"
+                      key={postImage._id}
                     />
                   </Link>
                 </>
               );
             })}
-          </secton>
+          </section>
         </div>
       )}
     </div>

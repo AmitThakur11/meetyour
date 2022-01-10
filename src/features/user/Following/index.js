@@ -8,7 +8,7 @@ function Following(props) {
             <div >
                 {
                     following.map((user)=>{
-                        return <FollowCard user ={user}/>
+                        return <FollowCard user ={user} key ={user._id}/>
 
                     })
 

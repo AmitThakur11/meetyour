@@ -10,7 +10,7 @@ function UserDataPage(props) {
             <div>
                 {
                     data.map((user)=>{
-                        return <FollowCard user ={user}/>
+                        return <FollowCard user ={user} key ={user._id}/>
 
                     })
 

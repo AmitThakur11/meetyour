@@ -11,11 +11,11 @@ export default function Saved() {
       {status === "success" && (
         <div className="savedSection">
           <section className="pageTitle">Saved({user.savePost.length})</section>
-          <secton className="postList">
+          <section className="postList">
             {user.savePost.map((postImage) => {
               return (
                 <>
-                  <Link to={`/post/${postImage._id}`}>
+                  <Link to={`/post/${postImage._id}`} key={postImage._id}>
                     <img
                       className="postList__img"
                       src={postImage.media[0]}
@@ -25,7 +25,7 @@ export default function Saved() {
                 </>
               );
             })}
-          </secton>
+          </section>
         </div>
       )}
     </div>

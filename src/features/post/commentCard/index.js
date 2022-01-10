@@ -8,6 +8,7 @@ import { IoMdTrash } from "react-icons/io";
 import { AiFillEdit } from "react-icons/ai";
 import { deleteComment } from "../postSlice";
 import { toast } from "react-toastify";
+import {compare} from "../../../utils/function"
 
 export function EditPostButton({ setEditForm, comment, ...props }) {
   const [edit, setEdit] = useState(false);
@@ -94,7 +95,7 @@ function CommentCard(props) {
           </button>
         </section>
       )}
-      {!input && comment.author._id === user._id && (
+      {!input && compare(comment.author._id,user._id) && (
         <EditPostButton
           setEditForm={setEditForm}
           comment={comment}

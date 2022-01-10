@@ -12,6 +12,7 @@ import { editPost } from "../../features/post/postSlice";
 import { deletePost } from "../../features/user/userSlice";
 import LikeList from "../../component/LikeList";
 import axios from "axios";
+import {compare} from "../../utils/function"
 
 export function EditPostButton({ setEditForm, post, ...props }) {
   const [edit, setEdit] = useState(false);
@@ -86,7 +87,7 @@ function ShowPost() {
   const { posts } = useSelector((state) => state.post);
   const [loader, setLoader] = useState(true);
   const { postId } = useParams();
-  const isAdmin = (id1,id2)=>id1===id2
+  // const isAdmin = (id1,id2)=>id1===id2
   useEffect(() => {
     (async () => {
       try {
@@ -116,7 +117,7 @@ function ShowPost() {
                 alt="user"
               />
               <p className="sP__username"><Link to={`/profile/${post.author._id}`}>@{post?.author.username}</Link></p>
-              { isAdmin(post.author._id,user._id) && (
+              { compare(post.author._id,user._id) && (
                 <div className="postEdit__wrapper">
                   <EditPostButton setEditForm={setEditForm} post={post} />
                 </div>

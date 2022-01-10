@@ -12,11 +12,11 @@ export default function Following() {
           <section className="pageTitle">
             Following({user.following.length})
           </section>
-          <secton className="followingList">
+          <section className="followingList">
             {user.following.map((item) => {
-              return <FollowCard user={item} />;
+              return <FollowCard user={item} key={item._id} />;
             })}
-          </secton>
+          </section>
         </div>
       )}
     </div>

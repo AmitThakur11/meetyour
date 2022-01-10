@@ -8,7 +8,6 @@ import {useState} from 'react'
 import { useNavigate } from 'react-router';
 import {useDispatch} from "react-redux"
 export default function Register() {
-  document.title ='Register';
   const [userInput , setUserInput] = useState({
     username : "",
     email : "",

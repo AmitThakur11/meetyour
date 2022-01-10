@@ -12,7 +12,6 @@ import {
 } from "./utils";
 
 export default function Login() {
-  document.title = "login";
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState({
     email: "",

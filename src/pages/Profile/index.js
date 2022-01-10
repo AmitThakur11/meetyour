@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { followUser } from "../../features/user/userSlice";
 import { changeProfilePic } from "../../features/user/userSlice";
+import {compare} from "../../utils/function"
 import Loader from "../../component/Loader";
 function Profile() {
   let [subPage, setSubPage] = useState("Post");
@@ -18,8 +19,7 @@ function Profile() {
   const dispatch = useDispatch();
   const { userId } = useParams();
 
-  const isAdmin = user?._id === userId;
-  const label = user?.following?.find(({ _id }) => _id === profile._id);
+  
 
   const getProfilePic = (e) => {
     const reader = new FileReader();
@@ -33,7 +33,7 @@ function Profile() {
     (async () => {
       try {
         setLoader(true);
-        if (!isAdmin) {
+        if (!compare(user._id,userId)) {
           const response = await axios.get(`/user/profile/${userId}`);
           setProfile(response.data.data);
         } else {
@@ -44,7 +44,7 @@ function Profile() {
         setLoader(false);
       }
     })();
-  }, [userId, user, isAdmin]);
+  }, [userId, user]);
 
   return (
     <section className="profileLayout">
@@ -59,7 +59,7 @@ function Profile() {
                 ) : (
                   <img src={profile?.displayPic} alt="/" />
                 )}
-                {isAdmin && (
+                {compare(user._id,userId) && (
                   <label htmlFor="picChange" className="pd__imgEditBtn">
                     <RiCamera3Line />
                   </label>
@@ -77,13 +77,13 @@ function Profile() {
                   <span>@</span>
                   {profile?.username}
                 </div>
-                {!isAdmin && (
+                {compare(user._id ,userId) && (
                   <button
                     onClick={() =>
                       dispatch(followUser({ toFollow: profile._id }))
                     }
                   >
-                    {label ? "Unfollow" : "Follow"}
+                    {compare(user.following._id,profile._id)? "Unfollow" : "Follow"}
                   </button>
                 )}
               </div>
@@ -120,7 +120,7 @@ function Profile() {
                 onClick={() => setSubPage("Following")}
                 subPage={subPage}
               />
-              {isAdmin && (
+              {compare(user._id,userId) && (
                 <ProfileButton
                   data={profile.savePost}
                   label="Saved"
@@ -133,25 +133,25 @@ function Profile() {
           <div className="profileData">
             <div className="profileData__wrapper">
               {subPage === "Post" && (
-                <UserPost post={profile.post} isAdmin={isAdmin} />
+                <UserPost post={profile.post} />
               )}
               {subPage === "About" && (
-                <About user={profile} isAdmin={isAdmin} />
+                <About user={profile} isAdmin={compare(user._id,userId)} />
               )}
               {subPage === "Followers" && (
                 <UserDataPage
                   user={{ data: profile.followers, title: "Followers" }}
-                  isAdmin={isAdmin}
+                 
                 />
               )}
               {subPage === "Following" && (
                 <UserDataPage
                   user={{ data: profile.following, title: "Following" }}
-                  isAdmin={isAdmin}
+                 
                 />
               )}
               {subPage === "Saved" && (
-                <UserPost post={profile.savePost} isAdmin={isAdmin} />
+                <UserPost post={profile.savePost} />
               )}
             </div>
           </div>

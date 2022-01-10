@@ -10,7 +10,7 @@ function UserPost(props) {
                     
                         {
                             post?.map((postImage)=>{
-                                return <Link to ={`/post/${postImage._id}`}><img  className ="userPostImg" src ={postImage.media[0]} alt="post"/></Link>
+                                return <Link to ={`/post/${postImage._id}`} key ={postImage._id}><img   className ="userPostImg" src ={postImage.media[0]} alt="post"/></Link>
                                     
                             })
                         }

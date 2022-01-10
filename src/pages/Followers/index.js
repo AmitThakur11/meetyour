@@ -12,11 +12,11 @@ export default function Followers() {
           <section className="pageTitle">
             Followers ({user.followers.length})
           </section>
-          <secton className="followerList">
+          <section className="followerList">
             {user.followers.map((item) => {
-              return <FollowCard user={item} />;
+              return <FollowCard user={item}  key={item._id}  />;
             })}
-          </secton>
+          </section>
         </>
       )}
     </div>

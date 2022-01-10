@@ -14,6 +14,7 @@ function Header() {
   const [searchText, setSearchText] = useState("");
   const [userOption, setUserOption] = useState(false);
   const { user, otherUsers, login } = useSelector((state) => state.user);
+  
   const searchData = otherUsers.filter((data) =>
     data.username.match(searchText.toLocaleLowerCase())
   );
@@ -39,15 +40,19 @@ function Header() {
               <input
                 value={searchText}
                 placeholder="Search..."
-                onChange={(e) => setSearchText(e.target.value)}
+                onChange={(e) => {
+                  setSearchText(e.target.value)
+                  console.log(otherUsers)
+                }}
               />
               {searchText.length > 0 && (
                 <div className="searchResult">
                   {searchData.map((user) => {
                     return (
                       <>
-                        <Link to={`/profile/${user._id}`}>
+                        <Link to={`/profile/${user._id}`} >
                           <div
+                          key ={user._id}
                             className="searchItem"
                             onClick={() => {
                               setSearchText("");

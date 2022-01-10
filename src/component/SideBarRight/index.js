@@ -9,7 +9,13 @@ import { useNavigate } from "react-router";
 function SideBarRight({ on }) {
   const dispatch = useDispatch();
   const { user, otherUsers } = useSelector((state) => state.user);
-  // const followingId = user?.following?.map((otherUser)=>otherUser._id);
+  const explore =(others)=>{
+    const userIds = otherUsers.map(({_id})=>_id).flat();
+    return others._id !== user._id && userIds.includes(others._id)
+   
+  }
+
+
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(allUsers());
@@ -26,7 +32,7 @@ function SideBarRight({ on }) {
       {otherUsers.map(
         (others, index) =>
           index < 3 &&
-          others._id !== user._id && (
+          explore(others) && (
             <FollowCard key={others._id} user={others} />
           )
       )}
