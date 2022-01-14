@@ -77,7 +77,7 @@ function Profile() {
                   <span>@</span>
                   {profile?.username}
                 </div>
-                {compare(user._id ,userId) && (
+                {!compare(user._id ,userId) && (
                   <button
                     onClick={() =>
                       dispatch(followUser({ toFollow: profile._id }))
