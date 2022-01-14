@@ -148,11 +148,6 @@
 
 }
 
-
-/* .profileData__wrapper{
-    width: 90%;
-    
-} */
 .pd__postContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -215,8 +210,7 @@
     .profileBio{
         width : 100%;
         line-height: 16px;
-        margin-left: 4px;
-        min-height: fit-content;
+        min-height: 60px;
     }
     .profileBio > p{
         font-size: 16px;
