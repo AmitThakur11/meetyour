@@ -28,7 +28,8 @@ function App() {
   const { login } = useSelector((state) => state.user);
   axiosInitializer();
   useEffect(() => {
-    (async () => {
+    
+    (() => {
       if (login) {
         dispatch(fetchUser());
         dispatch(getPosts());

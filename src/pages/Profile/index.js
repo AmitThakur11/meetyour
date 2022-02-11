@@ -18,6 +18,11 @@ function Profile() {
   let { user, status } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { userId } = useParams();
+  const label = user?.following?.find(({ _id }) => _id === userId);
+
+  
+    // console.log(user.following.find(({_id}) => _id === userId))
+  
 
   
 
@@ -78,12 +83,13 @@ function Profile() {
                   {profile?.username}
                 </div>
                 {!compare(user._id ,userId) && (
+               
                   <button
                     onClick={() =>
-                      dispatch(followUser({ toFollow: profile._id }))
+                      dispatch(followUser({ toFollow: userId }))
                     }
                   >
-                    {compare(user.following._id,profile._id)? "Unfollow" : "Follow"}
+                    {label ? "Unfollow" : "Follow"}
                   </button>
                 )}
               </div>
@@ -120,14 +126,14 @@ function Profile() {
                 onClick={() => setSubPage("Following")}
                 subPage={subPage}
               />
-              {compare(user._id,userId) && (
+              {/* {compare(user._id,userId) && (
                 <ProfileButton
                   data={profile.savePost}
                   label="Saved"
                   onClick={() => setSubPage("Saved")}
                   subPage={subPage}
                 />
-              )}
+              )} */}
             </div>
           </div>
           <div className="profileData">

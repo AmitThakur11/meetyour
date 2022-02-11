@@ -1,6 +1,7 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios'
 import {toast} from "react-toastify"
+
 export const getPosts = createAsyncThunk('post/getPosts',async ()=>{
     const response = await axios.get("post/all");
     return response.data.data
@@ -69,13 +70,14 @@ const postSlice = createSlice({
             state.status ='error'
         },
         [likePost.fulfilled] : (state,{payload})=>{
+            
             const findPost = state.posts.findIndex((post)=>post._id === payload.postId)
-            state.posts[findPost].like = payload.response
+            findPost > 0  && (state.posts[findPost].like = payload.response)
             
         },
         [addComment.fulfilled] :(state,{payload})=>{
             const findPost = state.posts.findIndex((post)=>post._id === payload.postId);
-            state.posts[findPost].comments.unshift(payload.response);
+            findPost >0 && (state.posts[findPost].comments.unshift(payload.response));
             toast.success("Comment added")
         },
         [deleteComment.fulfilled]:(state,{payload})=>{

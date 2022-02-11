@@ -35,7 +35,7 @@ function CommentSection(props) {
 
           {post.comments.slice(0, displayComment.commentQty).map((comment) => {
             return (
-              <section className="comment">
+              <section key ={comment._id} className="comment">
                 <CommentCard comment={comment} post ={post} />
               </section>
             );
