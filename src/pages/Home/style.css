@@ -1,0 +1,97 @@
+.home {
+    display: flex;
+    width: 100%;
+    position: relative;
+    min-height: calc(100vh - 80px);
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+    /* display: none; */
+
+}
+
+.homeSide__btn {
+    /* display: none; */
+    position: absolute;
+}
+
+
+.sideFloating__btnContainer {
+    background:black;
+    display: flex;
+    width: fit-content;
+
+    align-items: center;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 101010101;
+    border:0;
+    padding:4px;
+    border-radius: 5px;
+}
+
+.sideFloating__btnContainer>label {
+    font-size: 32px;
+    display: inline-flex;
+    margin: 0px 4px;
+    color:white
+}
+
+.sideFloating__btnContainer>label>a {
+    display: inline-flex;
+    color:white;
+}
+#goTo__addPost{
+    display: inline-flex;
+    
+
+}
+
+#menuBtn {
+    display: none;
+
+}
+
+#exploreBtn {
+    display: none;
+
+}
+
+
+
+@media(max-width:780px) {
+    .home {
+        display: flex;
+    }
+
+
+    #menuBtn {
+        display: none;
+    }
+
+    #exploreBtn {
+        display: inline-flex;
+    }
+
+
+}
+
+@media(max-width:480px) {
+    .home {
+        width: 100%;
+    }
+
+    #menuBtn {
+        display: inline-flex;
+    }
+
+    #exploreBtn {
+        display: inline-flex;
+    }
+
+
+
+
+
+}

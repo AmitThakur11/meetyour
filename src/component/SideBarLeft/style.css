@@ -1,0 +1,138 @@
+.leftSideBar__container{
+    background: white;
+    padding:20px 10px;
+    border-radius: 6px;
+    background: white;
+    width: 15%;
+    max-width: fit-content;
+    margin-right: 1em;
+    height: 460px;
+    display: flex;
+    /* padding:20px auto; */
+    flex-direction: column;
+    place-items: center;
+    position: sticky;
+    top:140px;
+}
+
+.leftSideBar{
+  display: flex;
+  flex-direction: column;
+  /* width: 100%;/ */
+  padding:0px 20px;
+  overflow-y: scroll;
+}
+
+.leftSideBar::-webkit-scrollbar {
+    width: 6px;
+    /* background: black; */
+    
+  }
+
+.leftSideBar::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+  }
+   
+.leftSideBar__img{
+    width:130px;
+    margin-bottom: 10px;
+    height:130px;
+    background-color: rgb(221, 220, 220);
+    cursor: pointer;
+    border-radius: 50%;
+    border:2px solid black;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; */
+
+
+
+}
+@media(max-width:780px){
+  .leftSideBar__container{
+    width: 25%;
+  }
+  .leftSideBar{
+    padding: 10px;
+  }
+  .bar-one >img{
+    width: 100px;
+    height: 100px;
+  }
+
+}
+
+@media(max-width:480px){
+  .leftSideBar__container{
+    background: white;
+    padding: 20px 10px;
+    border-radius: 6px;
+    background: white;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: calc( 100vh - 100px );
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    position: fixed;
+    top: 60px;
+    width: 50%;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+
+    left: 0;
+    /* display: none; */
+    z-index: 999;
+    transform: translate(-110%);
+    transition: 320ms ease-in-out;
+}
+
+.barOn{
+  transform: translate(0%);
+}
+
+.barOn >img{
+  width:60%
+}
+.leftSideBar{
+  display: flex;
+  flex-direction: column;
+  /* width: 100%;/ */
+  padding:0px 20px;
+  overflow-y: scroll;
+}
+
+.leftSideBar::-webkit-scrollbar {
+    width: 6px;
+    /* background: black; */
+    
+  }
+
+.leftSideBar::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+    
+  }
+/*    
+.bar-one{
+    /* width:20%; */
+    /* display: flex; */
+    
+    /* flex-direction: column; */
+    /* align-items: center; */
+/* } */ */
+
+.leftSideBar__img{
+
+    margin-bottom: 10px;
+
+    cursor: pointer;
+    border-radius: 50%;
+    border:2px solid var(--red);
+
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; */
+
+
+
+}
+}

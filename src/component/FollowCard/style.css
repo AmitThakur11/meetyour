@@ -1,40 +1,64 @@
-.followCard{
-    display: flex;
-    
-    min-height: 70px;
-    min-width: fit-content;
-    background: white;
-    padding :6px 10px;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    align-items: center;
-}
 
-.followCard > img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: 1px solid black;
-    
-}
-
-.followCard__detail{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex:1;
-    align-items: flex-end;
-}
-.followCard__name{
-    font-size: 15px;
-    margin-bottom:10px;
-
-
-}
-.followCard__btn{
+  
+  .followCard{
+    min-height:60px;
     padding: 4px 10px;
-    font-weight: 700;
-    border-radius: 4px;
-    font-size: 14px;
-    background: var(--primary-color);
-}
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width:95%;
+    max-width: 300px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom:10px;
+    display :flex;
+    align-items: center;
+    flex-wrap: wrap;
+  
+  }
+  .fc_userImg{
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    border:1px solid black;
+    transition: 300ms ease-in-out;
+  }
+  .fc_userImg:hover{
+      border :2px solid var(--primary-color);
+      transform :scale(1.1)
+  }
+  
+  .fc_two{
+    flex:1;
+    display:flex;
+    
+    justify-content: flex-start;
+    margin-left : 10px;
+    font-size: 16px;
+  }
+  .fc_followBtn{
+    border:0px;
+    background :var(--primary-color);
+    color:white;
+    font-size: 16px;
+    padding:6px 8px;
+    font-weight: 600;
+    border-radius: 3px;
+    transition: 300ms ease-in-out;
+  
+  }
+  .fc_followBtn:hover{
+      background: black;
+      color:white;
+      transform: scale(1.1);
+      
+  }
+  .fc_followBtn >span{
+    display: flex;
+    align-items: center;
+  }
+
+
+  @media(max-width:480px) {
+    .followCard{
+      /* margin : 6px 0px; */
+    }
+  }

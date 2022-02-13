@@ -1,0 +1,34 @@
+.emptyArea{
+    width: 100%;
+    position: relative;
+}
+
+.ea__image{
+    width: 100%;
+}
+.ea__btn{
+    color: white;
+    background: black;
+    padding: 6px;
+    font-size: 28px;
+    position: absolute;
+    font-weight: 600;
+    border-radius: 2px;
+    top: 10%;
+    left: 5%;
+    transition: 300ms ease-in-out;
+}
+
+.ea__btn:hover{
+    background-color: var(--primary-color);
+    transform: scale(1.15);
+}
+
+@media(max-width:480px){
+    .ea__btn{
+        top: 90%;
+        font-size: 20px;
+        left: 35%;
+    }
+
+}

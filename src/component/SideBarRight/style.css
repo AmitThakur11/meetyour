@@ -1,0 +1,119 @@
+.rightSideBar{
+    background: white;
+    border-radius: 6px;
+
+    height: fit-content;
+    position: sticky;
+    top:120px;
+}
+
+.rightSideBar::-webkit-scrollbar {
+    width: 6px;
+    /* background: black; */
+    
+  }
+
+.rightSideBar::-webkit-scrollbar-thumb{
+    background: #7de2e2;
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+    /* display: none; */
+  }
+
+  .rightSideBar::-webkit-scrollbar-thumb:hover{
+    background: #7de2e2;
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+    display: block;
+  }
+   
+.bar-two{
+    overflow-y:auto;
+    display: flex;
+    width:22%;
+    flex-direction: column;
+    place-items: center;
+    padding:10px;
+}
+.exploreSection{
+  margin-bottom: 10px;
+  font-size: 32px;
+  background-color: rgb(219, 214, 214);
+  padding: 5px;
+  border-radius: 50%;
+  display: inline-flex;
+}
+
+.exploreBtn{
+  width: 95%;
+  background-color: var(--primary-color);
+  border:0;
+  height: 30px;
+  font-weight: 700;
+  color:white;
+  border-radius: 4px;
+
+}
+@media(max-width:780px){
+  .rightSideBar{
+    height: 480px;
+    top:110px;
+    display: none;
+}
+.bar-two{
+
+  display: flex;
+  position: fixed;
+  height: calc( 100vh - 60px );
+  right: 0;
+  top: 100px;
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  transition: 320ms ease-in-out;
+  transform: translateX(110%);
+}
+  .barOn{
+    transform: translate(0%);
+  }
+}
+
+@media(max-width:480px){
+  .rightSideBar{
+    position: sticky;
+    top:120px;
+    display: none;
+}
+
+.rightSideBar::-webkit-scrollbar {
+    width: 6px;
+    
+  }
+
+.rightSideBar::-webkit-scrollbar-thumb{
+    background: #7de2e2;
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+    /* display: none; */
+  }
+
+  .rightSideBar::-webkit-scrollbar-thumb:hover{
+    background: #7de2e2;
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+    display: block;
+  }
+   
+.bar-two{
+ 
+  display: flex;
+  position: fixed;
+  height: calc( 100vh - 60px );
+  right: 0;
+  top: 60px;
+  width: 70%;
+}
+.barOn{
+  transform: translate(0%);
+}
+}
+

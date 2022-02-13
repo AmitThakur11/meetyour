@@ -1,0 +1,274 @@
+.profileLayout{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 20px auto 0px auto;
+    position: relative;
+    
+}
+.profileHeader__detail{
+    display: flex;
+    /* justify-content: center; */
+        flex-direction: column;
+        justify-content: center;
+
+}
+.profileLayout__wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding:0px 10px;
+    margin-bottom: 2rem;
+    
+}
+.profileData__wrapper{
+    width: 90%;
+}
+.profileHeader__img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pd__img{
+    position: relative;
+    width :200px;
+    height: 200px;
+    border-radius: 50%;
+    border :2px solid var(--primary-color);
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pd__img >img{
+    width :200px;
+    height: 200px;
+    border :2px solid var(--primary-color);
+    
+    border-radius: 50%;
+    
+}
+.pd__imgEditBtn{
+    position:absolute;
+    bottom:4%;
+    font-size: 24px;
+    right: 7%;
+    cursor: pointer;
+    background: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border:2px solid var(--primary-color)
+}
+
+.pd__Name{
+    font-size: 42px;
+    font-weight: 700;
+    background: white;
+    padding:4px 10px;
+    border-radius :6px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+
+    width: fit-content;
+}
+
+.pd__Name >span{
+    color: var(--primary-color);
+    font-weight: 900;
+}
+.pd__NameContainer{
+    display: flex;
+}
+.pd__NameContainer >button{
+    background: black;
+    color: white;
+    height: fit-content;
+    align-self: center;
+    margin-left: 10px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+
+}
+.pd__about{
+    min-height: 300px;
+    background: white;
+}
+.profileButton__section{
+    width: 100%;
+    display: grid;
+    place-content: center;
+}
+.profileButton__wrapper{
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    place-items: center;
+    margin: 20px 0px;
+
+    
+}
+
+.profileData{
+    width :100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profileBio{
+    width:600px;
+    min-height: 80px;
+    background-color: white;
+    color : var(--primary-color);
+    padding:4px 8px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 6px;
+    line-height: 28px;
+}
+
+.profileBio > p{
+    font-size :24px;
+}
+
+.profileBio > a{
+    text-decoration: none;
+    color:grey;
+    font-size: 14px;
+    display: inline-flex;
+    font-weight: 700;
+
+}
+
+.pd__postContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    place-content: center;
+    flex-wrap: wrap;
+    padding: auto;
+}
+
+
+.pd__postContainer >img:hover{
+    width: 25%;
+    transform: scale(1.1);
+    z-index: 999;
+    background: white;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+
+}
+
+#picChange{
+    display: none;
+}
+
+
+
+@media(max-width:780px){
+    .profileLayout__wrapper{
+
+        width: 100%;
+        justify-content: space-around;
+        padding:0px 5px;
+        margin-top: 1em;
+        margin-bottom: 0;
+        
+    }
+    .pd__img{
+        width :140px;
+        height: 140px;
+        
+    }
+    .pd__img >img{
+
+        width :140px;
+        height: 140px;
+
+
+    }
+    .pd__Name{
+        font-size: 20px;
+    }
+    .pd__NameContainer{
+        justify-content: space-between;
+    }
+    .pd__NameContainer >button {
+        
+        padding: 4px 4px;
+    }
+    .profileHeader__detail{
+        width:60%
+    }
+    .profileBio{
+        width : 100%;
+        line-height: 16px;
+        min-height: 60px;
+    }
+    .profileBio > p{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .profileButton__wrapper{
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin-bottom: 10px;
+    }
+
+    .pd__imgEditBtn{
+        
+ 
+        font-size: 16px;
+ 
+        cursor: pointer;
+        background: white;
+        width:20px;
+        height:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border:1px solid var(--primary-color)
+    }
+    .profileBio > a {
+      
+        font-size: 10px;
+    }
+    .profileData__wrapper{
+        margin:0;
+    }
+   
+    .imageLoad__text{
+        font-size: 14px;
+    }
+}
+
+
+@media(max-width:480px){
+    .pd__Name{
+        font-size: 16px;
+    }
+    .profileLayout{
+        max-width: 0px auto;
+    }
+    .pd__img{
+        width :100px;
+        height: 100px;
+        
+        
+    }
+    .pd__img >img{
+
+        width :100px;
+        height: 100px;
+       
+
+    }
+}

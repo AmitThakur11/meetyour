@@ -1,65 +1,34 @@
 import React, { useState } from "react";
 import { FaRegImage } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
-import UserImg from "../../../media/user.jpg";
-import axios from "axios";
+import {useSelector , useDispatch} from "react-redux"
 import "./style.css";
+import {removePreview,previewImg} from "./functions"
+import {addPost} from "../postSlice"
+import { toast } from "react-toastify";
 function AddPost() {
   const [imgData, setImgData] = useState([]);
   const [preview, setpreview] = useState([]);
-  const [imgUrl, setImgUrl] = useState([]);
-
-  const uploadImage = async () => {
-    for (let i = 0; i < imgData.length; i++) {
-      const formData = new FormData();
-      formData.append("file", imgData[i]);
-      formData.append("upload_preset", "z0t3ezb4");
-      try {
-        const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/dexterology/image/upload",
-          formData
-        );
-        console.log(response.data.url);
-        setImgUrl((imgUrl) => {
-          return [...imgUrl, response.data.url];
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
-
-  const previewImg = (file) => {
-    for (let i = 0; i < file.length; i++) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file[i]);
-      reader.onloadend = () => {
-        setpreview((img) => {
-          return [...img, reader.result];
-        });
-      };
-    }
-  };
-
-  const removePreview = (img)=>{
-    const filteredPreview = preview.filter((item)=>item !== img);
-    setpreview(filteredPreview)
-}
+  const [postData, setPostData] = useState({caption : "", media : []});
+  const {user} = useSelector(state => state.user)
+  const dispatch = useDispatch();  
 
   return (
     <section className="addPost__section">
       <section className="addPost__wrapper">
         <div className="userPhoto">
-          <img src={UserImg} alt="profilepic" />
+          <img src={user.displayPic} alt={imgData} />
         </div>
         <div className="inputPost__section">
-          <textArea placeholder="What's on your mind"></textArea>
+          <textarea placeholder={`Hey ${user.username}, what's in your mind.`} onChange ={(e)=>setPostData((postData)=>{
+            return {...postData , caption : e.target.value}
+          })}></textarea>
           <div className="imagePreview">
             {preview.length > 0 &&
               preview.map((img) => {
                 return (
                   <div className="preview">
-                    <div className="cancelPreview" onClick ={()=>removePreview(img)}>
+                    <div className="cancelPreview" onClick ={()=>removePreview(img ,setpreview , preview)}>
                            
                       <MdCancel />
                     </div>
@@ -77,13 +46,23 @@ function AddPost() {
               id="imageInput"
               onChange={(e) => {
                 setImgData(e.target.files);
-                previewImg(e.target.files);
+                previewImg(e.target.files,setpreview);
               }}
-              multiple
               accept="image/*"
             />
 
-            <button className="postBtn" onClick={() => uploadImage()}>
+            <button className="postBtn" onClick={() =>{
+              const {caption} = postData;
+              if(!caption){
+                return toast.info("Need a caption !")
+              }
+              if(preview.length === 0){
+                return toast.info("Empty media !")
+              }
+            
+              dispatch(addPost({caption : postData.caption , media : preview }))
+
+            }}>
               POST
             </button>
           </div>

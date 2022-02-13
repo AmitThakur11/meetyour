@@ -1,0 +1,38 @@
+.sideMenu__btn{
+    display: flex;
+
+    align-self: flex-start;
+    display: flex;
+    /* justify-content: center; */
+    place-items: center;
+    margin-bottom: 16px;
+    background: rgb(197, 197, 197);
+    border-radius: 4px;
+    padding:4px 10px;
+    color:var(--primary-color);
+    font-weight: 700;
+    font-size: 16px;
+
+}
+.sideMenu_icon{
+    font-size: 26px;
+    margin-right: 5px;
+    color: black;
+}
+
+@media(max-width:780px){
+    .sideMenu__btn{
+        
+        margin-bottom: 13px;
+        padding:4px 8px;
+        /* color:white; */
+        font-weight: 600;
+        font-size: 16px;
+    
+    }
+    .sideMenu_icon{
+        font-size: 20px;
+        margin-right: 3px;
+    }
+    
+}

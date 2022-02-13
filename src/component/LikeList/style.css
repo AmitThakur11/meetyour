@@ -1,0 +1,53 @@
+
+
+
+.likeList__section{
+    background: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    width:60%;
+    bottom:25%;
+    left: 10%;
+    max-height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    position: sticky;
+    z-index: 999999;
+    border :1px solid black;
+}
+
+.likeList__wrapper{
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 6px;
+margin-top: 15px;
+border-radius: 6px;
+overflow-y: scroll;
+}
+.likeList__wrapper::-webkit-scrollbar {
+    width: 6px;
+    /* background: black; */
+    
+  }
+
+.likeList__wrapper::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+    border-radius: 10px;
+    outline: 1px solid slategrey;
+  }
+
+.likeList__closeBtn{
+position: absolute;
+color:red;
+font-size: 24px;
+padding: 4px;
+right: 0;
+}
+
+@media(max-width :480px){
+  .likeList__section{
+    width: 100%;
+  }
+}

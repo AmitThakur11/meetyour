@@ -1,0 +1,57 @@
+.postReaction{
+    width:100%;
+    padding:0px 0px;
+    display: flex;
+    position: relative;
+    justify-content:space-between;
+    align-items: center;
+    /* background:rgb(233, 231, 231); */
+    
+}
+.likedBy{
+    background-color: rgb(227, 227, 227);
+    padding:4px 7px;
+    margin-left: 4px;
+    font-size: 16px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border : 1px solid rgb(205, 205, 205)
+}
+.likedBy > span{
+    color : var(--primary-color)
+}
+
+
+.postReaction__wrapper{
+    display:flex;
+    justify-content: flex-end;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-bottom-right-radius: 3px;
+    width: fit-content;
+    
+}
+.postReaction__wrapper > .reaction{
+    display: flex;
+    margin :1px;
+    position: relative;
+    font-size: 1.5em;
+
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+
+}
+.reaction > .count{
+    font-size: 18px;
+
+}
+
+
+@media(max-width :780px){
+    .likedBy{
+        font-size: 12px;
+    }
+}

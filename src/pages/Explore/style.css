@@ -1,0 +1,78 @@
+.explorePage{
+    margin-top: 2rem;
+}
+
+.exploreList{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    grid-gap: 10px;
+    width: 100%;
+    margin : 0px auto
+}
+
+
+.exploreCard{
+    width: 180px;
+    height: 200px;
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 4px;
+    background-color: white;
+    padding:10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    margin-bottom: 10px;
+}
+
+.ec__img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border : 3px solid rgb(194, 192, 192);
+}
+.ec__name{
+    color : var(--primary-color);
+    font-size: 20px;
+    text-align: center;
+}
+.ec__btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.ec__followBtn{
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    padding:5px 0px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+}
+
+
+@media(max-width :480px){
+    .exploreList{
+       
+    }
+    .exploreCard__wrapper{
+       
+    }
+    .exploreCard{
+        max-height: fit-content;
+        
+    }
+    .ec__img{
+        width: 80px;
+        height: 80px;
+    }
+    .ec__name{
+        font-size: 16px;
+    }
+    .ec__followBtn{
+        font-size: 14px;
+    }
+}

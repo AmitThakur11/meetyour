@@ -1,0 +1,5 @@
+export {default as About } from "./About"
+export {default as Following} from "./Following" 
+export {default as ProfileButton } from "./ProfileButton" 
+export {default as UserDataPage} from "./UserDataPage"
+export {default as UserPost} from  "./UserPosts"

@@ -1,10 +1,10 @@
-.profileButton button{
+.profileButton > button {
     background: black;
     color:white;
-    padding :10px;
+    padding :6px 10px;
     font-size: 24px;
     margin :0px 10px 0px;
-    width : 130px;
+    width : fit-content;
     border-radius: 4px;
     font-weight: 700;
     min-width: fit-content;
@@ -14,5 +14,35 @@
 .profileButton button:hover{
     transform: scale(1.1);
     background: var(--primary-color);
-    color:black;
+    color:white;
+}
+
+.selected button{
+   color:"white";
+   background : var(--primary-color)
+
+}
+
+
+@media(max-width:780px){
+    .profileButton > button{
+        font-size: 20px;
+    }
+
+}
+
+@media(max-width:480px){
+    .profileButton >  button{
+        background: black;
+        color:rgb(255, 255, 255);
+        padding :4px;
+        font-size: 14px;
+        margin:4px;
+        width : fit-content;
+        border-radius: 4px;
+        font-weight: 700;
+        min-width: fit-content;
+        transition: 300ms ease-in-out;
+    }
+
 }
