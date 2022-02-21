@@ -1,3 +1,17 @@
 .userData__wrapper{
     width:90vw
 }
+
+.cardContainer{
+    display: grid;
+    
+    width: 100%;
+    grid-template-columns: 1fr 1fr ;
+}
+
+@media(max-width:480px){
+    .cardContainer{
+        justify-items: center;
+        grid-template-columns: 1fr;
+    }
+}

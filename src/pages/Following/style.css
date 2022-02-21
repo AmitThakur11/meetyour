@@ -2,16 +2,17 @@
     margin-top:2rem;
 }
 .followingList{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
     margin :10px;
 }
 
 @media(max-width : 480px){
     .followingList{
-        justify-content: center;
-        align-items: center;
+        
+        grid-template-columns: 1fr;
+        width: 100%;
         margin:0;
     }
 }

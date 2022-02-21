@@ -7,7 +7,7 @@ function UserDataPage(props) {
         <div className ="userData__wrapper">
             <h1>{title}({data.length})</h1>
             <br/>
-            <div>
+            <div className="cardContainer">
                 {
                     data.map((user)=>{
                         return <FollowCard user ={user} key ={user._id}/>
