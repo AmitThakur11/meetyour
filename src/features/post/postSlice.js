@@ -13,6 +13,7 @@ export const addPost = createAsyncThunk("post/add", async(postData)=>{
 })
 
 export const likePost = createAsyncThunk("post/like",async(postId)=>{
+    console.log("postId" ,postId)
     const response = await axios.post(`post/like/${postId}`);
     return {response : response.data.data.like , postId : postId }
 })
@@ -70,9 +71,11 @@ const postSlice = createSlice({
             state.status ='error'
         },
         [likePost.fulfilled] : (state,{payload})=>{
+            console.log("payload",payload)
             
-            const findPost = state.posts.findIndex((post)=>post._id === payload.postId)
-            findPost > 0  && (state.posts[findPost].like = payload.response)
+            const findPost = state.posts.findIndex((post)=>post._id === payload.postId);
+            console.log("findPost",findPost)
+            findPost >= 0 && (state.posts[findPost].like = payload.response)
             
         },
         [addComment.fulfilled] :(state,{payload})=>{
@@ -97,6 +100,7 @@ const postSlice = createSlice({
         [editPost.fulfilled]:(state,{payload})=>{
             
             const postIndex = state.posts.findIndex((post)=>post._id === payload._id);
+            console.log(postIndex)
             state.posts[postIndex].caption = payload.caption
             state.status ="success"
             toast.success("Post updated ")
