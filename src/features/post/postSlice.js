@@ -80,7 +80,7 @@ const postSlice = createSlice({
         },
         [addComment.fulfilled] :(state,{payload})=>{
             const findPost = state.posts.findIndex((post)=>post._id === payload.postId);
-            findPost >0 && (state.posts[findPost].comments.unshift(payload.response));
+            findPost >=0 && (state.posts[findPost].comments.unshift(payload.response));
             toast.success("Comment added")
         },
         [deleteComment.fulfilled]:(state,{payload})=>{
