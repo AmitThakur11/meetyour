@@ -36,10 +36,10 @@ export default function Home() {
           <MdOutlineExplore />
         </label>
 
-        <label id="gotTo__addPost">
-          <a href="#addPost__area">
+        <label id="gotTo__addPost" onClick={()=>{
+          window.scrollTo(0, 0);
+        }}>
             <MdAddCircleOutline />
-          </a>
         </label>
 
         <label id="menuBtn" onClick={() => switchBtn("menu")}>
