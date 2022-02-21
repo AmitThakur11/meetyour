@@ -5,18 +5,18 @@ import { RiEditLine , RiCloseCircleFill} from "react-icons/ri";
 import {editProfile} from "../userSlice"
 import Loader from "../../../component/Loader"
 function About(props) {
-  const { user, isAdmin } = props;
+  const {profile,isAdmin } = props;
   const dispatch = useDispatch();
-  const {status}= useSelector((state)=>state.user)
-  const {username , email , dateOfBirth,bio,website} = user;
+  const {user,status}= useSelector((state)=>state.user)
+  const {username , email , dateOfBirth,bio,website} = profile;
   
 
   const initialData = {
-    username: username,
-    email: email,
-    dateOfBirth: dateOfBirth,
-    bio: bio,
-    website: website,
+    username: user.username,
+    email: user.email,
+    dateOfBirth: user.dateOfBirth,
+    bio: user.bio,
+    website: user.website,
   }
   const [userInput, setUserInput] = useState(initialData);
   const [edit , setEdit] = useState(false)
@@ -24,8 +24,10 @@ function About(props) {
   
 
   const userInputOnChange = (e) => {
+    console.log("profile",profile);
+    console.log("user",user)
     const { name, value } = e.target;
-    console.log(userInput);
+    
     setUserInput((input) => {
       return { ...input, [name]: value };
     });
@@ -52,26 +54,25 @@ function About(props) {
           <input name ="dateOfBirth" type ="date" value ={userInput.dateOfBirth} className ="editInput" onChange = {(e)=>userInputOnChange(e)} />
           <textarea name ="bio" value ={userInput.bio} className ="editTextarea" onChange = {(e)=>userInputOnChange(e)} />
           <input name ="website" value ={userInput.website} className ="editInput" onChange = {(e)=>userInputOnChange(e)} />
-          
           <button className ="saveEdit__btn" type="submit">Save</button>
         </form>
         
       </div>}
       <div className="aboutContainer__wrapper">
         <div className="aboutItem">
-          Username<div>{user.username}</div>
+          Username<div>{username}</div>
         </div>
         <div className="aboutItem">
-          Email<div>{user.email}</div>
+          Email<div>{email}</div>
         </div>
         <div className="aboutItem">
-          Bio<div>{user.bio}</div>
+          Bio<div>{bio}</div>
         </div>
         <div className="aboutItem">
-          D.O.B<div>{user.dateOfBirth}</div>
+          D.O.B<div>{dateOfBirth}</div>
         </div>
         <div className="aboutItem">
-          Website<div>{user.website}</div>
+          Website<div>{website}</div>
         </div>
         {isAdmin && (
           <div className="pd__editBtn" onClick={()=>setEdit(!edit)}>

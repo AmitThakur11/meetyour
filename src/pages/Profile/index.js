@@ -126,14 +126,7 @@ function Profile() {
                 onClick={() => setSubPage("Following")}
                 subPage={subPage}
               />
-              {/* {compare(user._id,userId) && (
-                <ProfileButton
-                  data={profile.savePost}
-                  label="Saved"
-                  onClick={() => setSubPage("Saved")}
-                  subPage={subPage}
-                />
-              )} */}
+              
             </div>
           </div>
           <div className="profileData">
@@ -142,7 +135,7 @@ function Profile() {
                 <UserPost post={profile.post} />
               )}
               {subPage === "About" && (
-                <About user={profile} isAdmin={compare(user._id,userId)} />
+                <About profile={profile} isAdmin={compare(user._id,userId)} />
               )}
               {subPage === "Followers" && (
                 <UserDataPage
