@@ -4,15 +4,15 @@
 
 .exploreList{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
     width: 100%;
+    justify-items: center;
     margin : 0px auto
 }
 
 
 .exploreCard{
-    width: 180px;
+    width: 160px;
     height: 200px;
     place-self: center;
     display: flex;
