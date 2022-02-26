@@ -15,6 +15,36 @@
 
 }
 
+.editCommentInput{
+    align-items: center;
+    display: flex;
+    border:1px solid;
+    padding:4px;
+}
+.editCommentInput > input{
+    
+    padding:5px 2px;
+    border-bottom: 1px solid;
+    border:0px;
+    flex:1;
+    font-size: 16px;
+    text-decoration: underline;
+    outline : none;
+    display: flex;
+    align-items: flex-end;
+
+}
+
+.editCommentInput > button{
+    background-color: black;
+
+    color:white;
+    border:0;
+    margin-left:3px;
+    font-weight:700;
+    padding:6px 6px;
+}
+
 .commentDetail{
     display: flex;
     flex:1;

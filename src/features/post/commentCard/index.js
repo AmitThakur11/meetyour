@@ -3,50 +3,16 @@ import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addComment } from "../postSlice";
 import TimeAgo from "../timeAgo";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import { IoMdTrash } from "react-icons/io";
-// import { AiFillEdit } from "react-icons/ai";
-import { deleteComment } from "../postSlice";
+
 import { toast } from "react-toastify";
 import {compare} from "../../../utils/function"
-
-export function EditPostButton({ setEditForm, comment, ...props }) {
-  const [edit, setEdit] = useState(false);
-
-  const dispatch = useDispatch();
-  const removeComment = () => {
-    setEdit(false);
-    dispatch(deleteComment({ postId: comment.post, commentId: comment._id }));
-  };
-  return (
-    <section className="editPost__section">
-      <label onClick={() => setEdit(!edit)}>
-        <HiOutlineDotsVertical />
-      </label>
-
-      {edit && (
-        <div className="editPost__modal">
-          <label onClick={() => removeComment()}>
-            <IoMdTrash /> Delete
-          </label>
-          {/* <label
-            onClick={() => {
-              setEdit(false);
-              setEditForm(true);
-            }}
-          >
-            <AiFillEdit /> Edit
-          </label> */}
-        </div>
-      )}
-    </section>
-  );
-}
+import {EditPostButton} from "./editPostBtn"
 function CommentCard(props) {
   const { user } = useSelector((state) => state.user);
   const { input, comment, post, style } = props;
   const [commentText, setCommentText] = useState("");
   const [editForm, setEditForm] = useState(false);
+  const [editComment ,setEditComment] = useState(false)
   const dispatch = useDispatch();
   const addNewComment = () => {
     if(commentText === ""){
@@ -55,6 +21,7 @@ function CommentCard(props) {
     dispatch(addComment({ postId: post._id, commentText: commentText }));
     setCommentText("");
   };
+
   return (
     <section className="commentWrapper" style={style}>
       <div>
@@ -84,7 +51,11 @@ function CommentCard(props) {
               placeholder="Write something"
             />
           ) : (
-            comment.comment
+            editComment ?  <div className ="editCommentInput">
+              <input value ={comment.comment}/>
+              <button onClick = {()=>{}}>Save</button>
+              <button onClick = {()=>{setEditComment(false)}}>Cancel</button>
+              </div> : comment.comment 
           )}
         </div>
       </section>
@@ -96,10 +67,12 @@ function CommentCard(props) {
         </section>
       )}
       {!input && compare(comment.author._id,user._id) && (
-        <EditPostButton
+        !editComment && <EditPostButton
           setEditForm={setEditForm}
           comment={comment}
           editForm={editForm}
+          editcomment = {editComment}
+          setEditComment ={setEditComment}
         />
       )}
     </section>
