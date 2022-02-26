@@ -29,14 +29,14 @@ export function EditPostButton({ setEditForm, comment, ...props }) {
           <label onClick={() => removeComment()}>
             <IoMdTrash /> Delete
           </label>
-          <label
+          {/* <label
             onClick={() => {
               setEdit(false);
               setEditForm(true);
             }}
           >
             <AiFillEdit /> Edit
-          </label>
+          </label> */}
         </div>
       )}
     </section>
