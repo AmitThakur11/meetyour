@@ -3,10 +3,10 @@ import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addComment ,editComment} from "../postSlice";
 import TimeAgo from "../timeAgo";
-
-import { toast } from "react-toastify";
 import {compare} from "../../../utils/function"
 import {EditPostButton} from "./editPostBtn"
+
+
 function CommentCard(props) {
   const { user } = useSelector((state) => state.user);
   const { input, comment, post, style } = props;

@@ -31,6 +31,7 @@ export const editPost = createAsyncThunk("post/edit",async({caption,postId})=>{
 })
 
 export const deleteComment = createAsyncThunk("/delete/comment",async(data)=>{
+    console.log(data)
     await axios.delete(`comment/${data.postId}/delete/${data.commentId}`);
     return data
 
@@ -38,7 +39,8 @@ export const deleteComment = createAsyncThunk("/delete/comment",async(data)=>{
 
 
 export const editComment = createAsyncThunk("/edit/comment",async(data)=>{
-    // await axios.post(`comment/${data.postId}/delete/${data.commentId}`,{newComment});
+    const response = await axios.post(`comment/${data.postId}/edit/${data.commentId}`,{newComment : data.newComment});
+    console.log(response)
     return data
 
 })
@@ -112,11 +114,12 @@ const postSlice = createSlice({
             toast.success("Post updated ")
         },
         [editComment.fulfilled]:(state,{payload})=>{
+            
             const {postId,commentId,newComment} = payload;
             const postIndex = state.posts.findIndex((post)=>postId === post._id);
             const commentIndex = state.posts[postIndex].comments.findIndex((comment)=>comment._id === commentId)
             state.posts[postIndex].comments[commentIndex].comment = newComment
-            // toast.success("Post updated ")
+            toast.success("Post updated ")
         }
         
 
