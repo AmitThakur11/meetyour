@@ -7,7 +7,6 @@ import { RiUserFollowLine, RiImageLine, RiBookmarkLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 function SideBarLeft({ on }) {
   let { user, status } = useSelector((state) => state.user);
-
   return (
     <section
       className={
