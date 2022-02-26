@@ -126,6 +126,12 @@ function Profile() {
                 onClick={() => setSubPage("Following")}
                 subPage={subPage}
               />
+              {compare(user._id,userId) && <ProfileButton
+                data={profile.savePost}
+                label="Save"
+                onClick={() => setSubPage("Saved")}
+                subPage={subPage}
+              />}
               
             </div>
           </div>
