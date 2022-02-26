@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addComment } from "../postSlice";
+import { addComment ,editComment} from "../postSlice";
 import TimeAgo from "../timeAgo";
 
 import { toast } from "react-toastify";
@@ -11,16 +11,29 @@ function CommentCard(props) {
   const { user } = useSelector((state) => state.user);
   const { input, comment, post, style } = props;
   const [commentText, setCommentText] = useState("");
+  const [editedComment,setEditedComment] = useState(null)
   const [editForm, setEditForm] = useState(false);
-  const [editComment ,setEditComment] = useState(false)
+  const [editOldComment ,setEditOldComment] = useState(false)
   const dispatch = useDispatch();
   const addNewComment = () => {
+    setEditOldComment(false)
     if(commentText === ""){
-      return toast.info("First write something")
+      return setEditedComment(comment.comment)
     }
     dispatch(addComment({ postId: post._id, commentText: commentText }));
     setCommentText("");
   };
+
+  const editingComment =()=>{
+    
+    if(editedComment === null || editedComment === ""){
+      setEditOldComment(false)
+      return
+    }
+    
+    dispatch(editComment({postId : post._id, commentId : comment._id , newComment : editedComment}))
+    setEditOldComment(false)
+  }
 
   return (
     <section className="commentWrapper" style={style}>
@@ -51,10 +64,10 @@ function CommentCard(props) {
               placeholder="Write something"
             />
           ) : (
-            editComment ?  <div className ="editCommentInput">
-              <input value ={comment.comment}/>
-              <button onClick = {()=>{}}>Save</button>
-              <button onClick = {()=>{setEditComment(false)}}>Cancel</button>
+            editOldComment ?  <div className ="editCommentInput">
+              <input value ={editedComment} placeholder={comment.comment} onChange={(e)=>setEditedComment(e.target.value)}/>
+              <button onClick = {()=>editingComment()}>Save</button>
+              <button onClick = {()=>{setEditOldComment(false)}}>Cancel</button>
               </div> : comment.comment 
           )}
         </div>
@@ -67,12 +80,12 @@ function CommentCard(props) {
         </section>
       )}
       {!input && compare(comment.author._id,user._id) && (
-        !editComment && <EditPostButton
+        !editOldComment && <EditPostButton
           setEditForm={setEditForm}
           comment={comment}
           editForm={editForm}
-          editcomment = {editComment}
-          setEditComment ={setEditComment}
+          editOldcomment = {editOldComment}
+          setEditOldComment ={setEditOldComment}
         />
       )}
     </section>

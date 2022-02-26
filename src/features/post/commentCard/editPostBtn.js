@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoMdTrash } from "react-icons/io";
 import { AiFillEdit } from "react-icons/ai";
-import { deleteComment } from "../postSlice";
-export function EditPostButton({ setEditForm, comment, setEditComment, ...props }) {
+import { deleteComment} from "../postSlice";
+export function EditPostButton({ setEditForm, comment, setEditOldComment, ...props }) {
     const [edit, setEdit] = useState(false);
   
     const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export function EditPostButton({ setEditForm, comment, setEditComment, ...props 
               onClick={() => {
                 setEdit(false);
                 setEditForm(false);
-                setEditComment(true)
+                setEditOldComment(true)
               }}
             >
               <AiFillEdit /> Edit
