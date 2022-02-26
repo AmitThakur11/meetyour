@@ -66,8 +66,10 @@ function CommentCard(props) {
           ) : (
             editOldComment ?  <div className ="editCommentInput">
               <input value ={editedComment} placeholder={comment.comment} onChange={(e)=>setEditedComment(e.target.value)}/>
+              <div className ="editComment__btnContainer">
               <button onClick = {()=>editingComment()}>Save</button>
               <button onClick = {()=>{setEditOldComment(false)}}>Cancel</button>
+              </div>
               </div> : comment.comment 
           )}
         </div>
