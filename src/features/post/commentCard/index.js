@@ -5,7 +5,7 @@ import { addComment } from "../postSlice";
 import TimeAgo from "../timeAgo";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoMdTrash } from "react-icons/io";
-import { AiFillEdit } from "react-icons/ai";
+// import { AiFillEdit } from "react-icons/ai";
 import { deleteComment } from "../postSlice";
 import { toast } from "react-toastify";
 import {compare} from "../../../utils/function"
